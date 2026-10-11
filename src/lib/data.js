@@ -1,0 +1,158 @@
+export const navItems = [
+    {
+        id: 1,
+        content: 'Home',
+        path: '/'
+    },
+    {
+        id: 2,
+        content: 'Ideas',
+        path: '/ideas'
+    },
+    {
+        id: 3,
+        content: 'Add Idea',
+        path: '/add-idea'
+    },
+    {
+        id: 4,
+        content: 'My Ideas',
+        path: '/my-ideas'
+    },
+    {
+        id: 5,
+        content: 'My Interactions',
+        path: '/my-interactions'
+    }
+];
+
+export const slides = [
+    {
+        tag: "Welcome to IdeaVault",
+        headline: "Where Bold Ideas\nFind Their Voice",
+        sub: "Share your startup vision with a community of builders, thinkers, and early adopters who believe the next big thing starts with a spark.",
+        bg: "#0f1117",
+        accent: "#6C63FF",
+        img: "💡",
+    },
+    {
+        tag: "Collaborate & Validate",
+        headline: "Your Idea Deserves\nReal Feedback",
+        sub: "Stop guessing. Post your concept, gather reactions, and refine your pitch with people who are genuinely passionate about innovation.",
+        bg: "#0a1628",
+        accent: "#00C9A7",
+        img: "🚀",
+    },
+    {
+        tag: "Discover Trends",
+        headline: "Explore What's\nTrending Today",
+        sub: "Surf the latest waves in tech, sustainability, fintech, and more. Find co-founders, early adopters, and mentors—all in one place.",
+        bg: "#160a28",
+        accent: "#FF6B6B",
+        img: "🔥",
+    },
+];
+
+export const stats = [
+    {
+        id: 1,
+        num: "12,400+",
+        level: "Ideas Shared"
+    },
+    {
+        id: 2,
+        num: "8,200+",
+        level: "Innovators"
+    },
+    {
+        id: 3,
+        num: "94K+",
+        level: "Votes Cast"
+    },
+    {
+        id: 4,
+        num: "31K+",
+        level: "Comments"
+    }
+];
+
+export const trendingIdeas = [
+    {
+        id: 1,
+        title: "AI-Powered Mental Health Coach",
+        category: "HealthTech",
+        imageUrl: 'https://i.ibb.co.com/hFLnZdj0/coach-nova-21237327280.png',
+        votes: 342,
+        comments: 47,
+        author: "Sara M.",
+        avatar: "SM",
+        color: "#6C63FF",
+        shortDesc: 'An AI-powered mental health coach is a digital tool that uses conversational artificial intelligence to offer 24/7 support for stress, anxiety, low mood, and daily emotional wellness.',
+        detailedDesc: ''
+    },
+    {
+        id: 2,
+        title: "Blockchain-Based Supply Chain Tracker",
+        category: "Logistics",
+        imageUrl: 'https://i.ibb.co.com/xSZ25B3d/images-q-tbn-ANd9-Gc-RDyw-Nl-T-SPJqp4-B9-ET-1lb-W5nsmux-By-MXIhi-F0500-Bw-s-10.jpg',
+        votes: 289,
+        comments: 31,
+        author: "Rafi K.",
+        avatar: "RK",
+        color: "#00C9A7",
+        shortDesc: 'A blockchain-based supply chain tracker uses a decentralized, unchangeable digital ledger to record the movement, condition, and ownership of goods from origin to consumer.',
+        detailedDesc: ''
+    },
+    {
+        id: 3,
+        title: "Peer-to-Peer Skill Exchange Platform",
+        category: "EdTech",
+        imageUrl: 'https://i.ibb.co.com/KxzCmvhZ/images-q-tbn-ANd9-Gc-Tmt-Cz4e-SDTS2ym-Clarcov-NQA1-RWODq-Eh4-CAt3u-Yq-E26w-s-10.jpg',
+        votes: 256,
+        comments: 52,
+        author: "Leila T.",
+        avatar: "LT",
+        color: "#FF6B6B",
+        shortDesc: 'A peer-to-peer skill exchange platform lets people teach each other their expertise without money. Instead of paying for classes, you trade what you know for what you want to learn.',
+        detailedDesc: ''
+    },
+    {
+        id: 4,
+        title: "Carbon Credit Marketplace for SMBs",
+        category: "CleanTech",
+        imageUrl: 'https://i.ibb.co.com/C5BwMXD8/images-q-tbn-ANd9-Gc-SRYF0-Bd-jm-Ld-X0p-VKo-XKr-ZA3-Fd9inxbi-Fyjw-Wbc38-ZZo-Jv4fnaccsb-NT0-s-10.jpg',
+        votes: 198,
+        comments: 28,
+        author: "Omar A.",
+        avatar: "OA",
+        color: "#FFB347",
+        shortDesc: 'Small and medium-sized enterprises (SMEs) can access voluntary carbon markets through specialized curated platforms that offer low-volume purchasing, built-in due diligence, and transparent pricing.',
+        detailedDesc: ''
+    },
+    {
+        id: 5,
+        title: "Hyper-local Food Waste Redistribution",
+        category: "FoodTech",
+        imageUrl: 'https://i.ibb.co.com/YTpPZv6F/chris-king-photography-food-waste-podcast-re-food-01.jpg',
+        votes: 174,
+        comments: 19,
+        author: "Priya N.",
+        avatar: "PN",
+        color: "#FF69B4",
+        shortDesc: 'Hyper-local food waste redistribution connects neighborhood food donors directly with nearby volunteers, NGOs, or residents to rescue edible surplus before it spoils.',
+        detailedDesc: ''
+    },
+    {
+        id: 6,
+        title: "No-Code SaaS Builder for Freelancers",
+        category: "Productivity",
+        imageUrl: 'https://i.ibb.co.com/B5jdRjG9/images-q-tbn-ANd9-Gc-TMs0dp-P66-l0w-XNuv-Xse4-Cif-Mq-EBo-G1nx96-FBoy-Rndg-s-10.jpg',
+        votes: 163,
+        comments: 36,
+        author: "James W.",
+        avatar: "JW",
+        color: "#4FC3F7",
+        shortDesc: 'No-code and AI-powered SaaS builders let freelancers and solo founders launch functional software without writing code.',
+        detailedDesc: ''
+    },
+];
