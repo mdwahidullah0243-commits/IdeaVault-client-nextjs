@@ -1,5 +1,5 @@
-import { MessagesSquare, ThumbsUp } from "lucide-react";
-import CommentBox from "./CommentBox";
+import { ThumbsUp } from "lucide-react";
+import CommentsModal from "./CommentsModal";
 
 const InteractionPart = () => {
     return (
@@ -14,7 +14,7 @@ const InteractionPart = () => {
                     <span>327</span>
                 </div>
 
-                <CommentBox />
+                <CommentsModal />
             </div>
         </div>
     );
