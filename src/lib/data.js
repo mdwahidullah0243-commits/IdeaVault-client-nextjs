@@ -88,7 +88,8 @@ export const trendingIdeas = [
         avatar: "SM",
         color: "#6C63FF",
         shortDesc: 'An AI-powered mental health coach is a digital tool that uses conversational artificial intelligence to offer 24/7 support for stress, anxiety, low mood, and daily emotional wellness.',
-        detailedDesc: ''
+        detailedDesc: '',
+        tags: ['health', 'wellness', 'fitness']
     },
     {
         id: 2,
@@ -101,7 +102,8 @@ export const trendingIdeas = [
         avatar: "RK",
         color: "#00C9A7",
         shortDesc: 'A blockchain-based supply chain tracker uses a decentralized, unchangeable digital ledger to record the movement, condition, and ownership of goods from origin to consumer.',
-        detailedDesc: ''
+        detailedDesc: '',
+        tags: ['health', 'wellness', 'fitness']
     },
     {
         id: 3,
@@ -114,7 +116,8 @@ export const trendingIdeas = [
         avatar: "LT",
         color: "#FF6B6B",
         shortDesc: 'A peer-to-peer skill exchange platform lets people teach each other their expertise without money. Instead of paying for classes, you trade what you know for what you want to learn.',
-        detailedDesc: ''
+        detailedDesc: '',
+        tags: ['health', 'wellness', 'fitness']
     },
     {
         id: 4,
@@ -127,7 +130,8 @@ export const trendingIdeas = [
         avatar: "OA",
         color: "#FFB347",
         shortDesc: 'Small and medium-sized enterprises (SMEs) can access voluntary carbon markets through specialized curated platforms that offer low-volume purchasing, built-in due diligence, and transparent pricing.',
-        detailedDesc: ''
+        detailedDesc: '',
+        tags: ['health', 'wellness', 'fitness']
     },
     {
         id: 5,
@@ -140,7 +144,8 @@ export const trendingIdeas = [
         avatar: "PN",
         color: "#FF69B4",
         shortDesc: 'Hyper-local food waste redistribution connects neighborhood food donors directly with nearby volunteers, NGOs, or residents to rescue edible surplus before it spoils.',
-        detailedDesc: ''
+        detailedDesc: '',
+        tags: ['health', 'wellness', 'fitness']
     },
     {
         id: 6,
@@ -153,6 +158,7 @@ export const trendingIdeas = [
         avatar: "JW",
         color: "#4FC3F7",
         shortDesc: 'No-code and AI-powered SaaS builders let freelancers and solo founders launch functional software without writing code.',
-        detailedDesc: ''
+        detailedDesc: '',
+        tags: ['health', 'wellness', 'fitness']
     },
 ];
