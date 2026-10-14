@@ -237,5 +237,15 @@ export const formInfo = {
 };
 
 export const categories = ["Tech", "Health", "AI", "Education", "Finance", "Environment", "Social", "E-Commerce", "SaaS", "Other"];
+
 export const tagSuggestions = ["mobile", "web", "B2B", "B2C", "marketplace", "automation", "open-source"];
+
 export const budgetRanges = ["$1,000", "$1,000 – $10,000", "$10,000 – $50,000", "$50,000 – $200,000", "$200,000+", "No Budget"];
+
+export const profileMenu = [
+    { icon: "👤", label: "View Profile", page: "Home" },
+    { icon: "⚙️", label: "Edit Profile", page: "Home" },
+    { icon: "💡", label: "My Ideas", page: "My Ideas" },
+    { icon: "💬", label: "My Interactions", page: "My Interactions" },
+    { icon: "🔔", label: "Notifications", page: "Home" },
+];

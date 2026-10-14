@@ -8,7 +8,7 @@ const SignInWithGoogle = ({ content }) => {
     // };
 
     return (
-        <button className="btn gap-2 w-full text-sm text-shadow-none font-medium shadow-none py-2 h-auto">
+        <button className="btn gap-2 w-full rounded-xl text-sm text-shadow-none font-medium shadow-none py-2 h-auto">
             <FcGoogle size={22} /> {content}
         </button>
     );
