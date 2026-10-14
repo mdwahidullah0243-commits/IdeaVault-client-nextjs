@@ -204,3 +204,38 @@ export const comments = [
         timeStamp: "10m",
     },
 ];
+
+export const positions = {
+    left: [10, 60, 80, 30, 70, 5],
+    top: [10, 5, 40, 70, 80, 55]
+};
+
+export const width = [280, 180, 240, 200, 160, 300];
+
+export const styles = {
+    stepActive: { border: `1.5px solid #e8b84b`, background: "#e8b84b1f" },
+    stepDone: { background: '#e8b84b', border: `1.5px solid #e8b84b` },
+    stepLine: { flex: 1, height: 1, background: "#ffffff1a", margin: "0 4px" },
+    stepLineDone: { background: `#e8b84b88` },
+    stepLabel: { position: "absolute", top: 36, left: "50%", transform: "translateX(-50%)", fontSize: 13, color: "#ffffff4d", whiteSpace: "nowrap", letterSpacing: "0.3px" },
+    stepLabelActive: { color: '#e8b84b', fontWeight: 500 },
+}
+
+export const steps = ["Basics", "Details", "Solution", "Review"];
+
+export const formInfo = {
+    title: "",
+    shortDesc: "",
+    detailedDesc: "",
+    category: "",
+    tags: [],
+    imageUrl: "",
+    budget: "",
+    audience: "",
+    problem: "",
+    solution: ""
+};
+
+export const categories = ["Tech", "Health", "AI", "Education", "Finance", "Environment", "Social", "E-Commerce", "SaaS", "Other"];
+export const tagSuggestions = ["mobile", "web", "B2B", "B2C", "marketplace", "automation", "open-source"];
+export const budgetRanges = ["$1,000", "$1,000 – $10,000", "$10,000 – $50,000", "$50,000 – $200,000", "$200,000+", "No Budget"];
