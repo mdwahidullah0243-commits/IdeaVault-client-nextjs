@@ -243,9 +243,9 @@ export const tagSuggestions = ["mobile", "web", "B2B", "B2C", "marketplace", "au
 export const budgetRanges = ["$1,000", "$1,000 – $10,000", "$10,000 – $50,000", "$50,000 – $200,000", "$200,000+", "No Budget"];
 
 export const profileMenu = [
-    { icon: "👤", label: "View Profile", page: "Home" },
-    { icon: "⚙️", label: "Edit Profile", page: "Home" },
-    { icon: "💡", label: "My Ideas", page: "My Ideas" },
-    { icon: "💬", label: "My Interactions", page: "My Interactions" },
-    { icon: "🔔", label: "Notifications", page: "Home" },
+    { icon: "👤", label: "View Profile", page: "/profile" },
+    { icon: "⚙️", label: "Edit Profile", page: "/profile/edit" },
+    { icon: "💡", label: "My Ideas", page: "/my-ideas" },
+    { icon: "💬", label: "My Interactions", page: "/my-interactions" },
+    { icon: "🔔", label: "Notifications", page: "/" },
 ];
