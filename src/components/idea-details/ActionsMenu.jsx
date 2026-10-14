@@ -22,7 +22,7 @@ const ActionsMenu = () => {
                         </Dropdown.Item>
 
                         <Dropdown.Item onAction={() => setIsDeleteOpen(true)} variant="danger" className="hover:bg-indigo-600 transition-all duration-200">
-                            <Label>Delete</Label>
+                            <Label className="text-danger">Delete</Label>
                         </Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown.Popover>

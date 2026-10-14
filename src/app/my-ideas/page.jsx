@@ -1,9 +1,22 @@
+import MyIdeaCard from "@/components/my-ideas/MyIdeaCard";
+import { trendingIdeas } from "@/lib/data";
 
 const MyIdeasPage = () => {
     return (
-        <div>
-            My Ideas Page
-        </div>
+        <section className="w-3/5 mx-auto my-12">
+            <h3 className="text-sm font-semibold tracking-[0.12em] uppercase text-[#6C63FF] mb-2.5">Dashboard</h3>
+            <h1 className="text-4xl font-bold tracking-[-0.02em] text-white">
+                My Ideas
+            </h1>
+
+            <div className="grid grid-cols-1 gap-5 mt-8">
+                {
+                    trendingIdeas.slice(0, 3).map((idea) => (
+                        <MyIdeaCard key={idea.id} idea={idea} />
+                    ))
+                }
+            </div>
+        </section>
     );
 };
 
