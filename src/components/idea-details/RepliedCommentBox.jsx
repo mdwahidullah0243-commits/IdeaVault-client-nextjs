@@ -20,8 +20,8 @@ const RepliedCommentBox = () => {
             <Image
                 src={'/send-post.png'}
                 alt="Send"
-                width={30}
-                height={30}
+                width={40}
+                height={40}
                 className="self-end cursor-pointer hover:scale-110 transition-all duration-200"
             />
         </div>

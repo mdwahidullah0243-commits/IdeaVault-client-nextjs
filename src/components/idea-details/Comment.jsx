@@ -5,69 +5,135 @@ import { Dot, Ellipsis, ThumbsDown, ThumbsUp } from "lucide-react";
 import { IoIosArrowDown } from "react-icons/io";
 import RepliedCommentBox from "./RepliedCommentBox";
 import { useState } from "react";
+import Image from "next/image";
+import ActionsMenu from "./ActionsMenu";
 
-const Comment = () => {
-    const [isClicked, setIsClicked] = useState(false);
-    console.log('isClicked:', isClicked);
+const Comment = ({ comment, isReply = false, isLast = true }) => {
+    const [isView, setIsView] = useState(false);
+    const [isReplyBox, setIsReplyBox] = useState(false);
+
+    const hasReplies = comment.replies?.length > 0;
 
     return (
-        <div className="my-3 grid grid-cols-12 relative">
+        <li className={`relative list-none ${isReply ? "pl-7" : ""}`}>
+            {/* 2. Elbow: reply-এর জন্য "L" আকৃতির বাঁকানো লাইন */}
+            {
+                isReply && (
+                    <span
+                        className={`absolute left-0 top-0 h-5 w-6 rounded-bl-xl border-b-2 border-l-2 border-gray-700 dark:border-gray-700`}
+                    />
+                )
+            }
 
-            {/* Draft: পুরো thread connector: খাড়া লাইন + নিচে rounded elbow */}
-            <span className={`pointer-events-none absolute bottom-4.5 left-3.5 top-9 w-6 rounded-bl-xl border-b-2 border-l-2 border-[#2e2e30ad] dark:border-gray-600`} />
+            {/* 3. Continuation: শেষ reply না হলে লাইন নিচে চলতে থাকবে */}
+            {
+                isReply && !isLast && (
+                    <span
+                        className={`absolute -bottom-5 left-0 top-5 border-l-2 border-gray-700 dark:border-gray-700`}
+                    />
+                )
+            }
 
-            <div className="col-span-9 flex gap-2">
-                {/* Part-1 */}
-                <div className="size-9 rounded-full flex items-center justify-center text-[12px] font-bold tracking-[0.03em] shrink-0 bg-[#6C63FF25] text-[#6C63FF]">
-                    SM
-                </div>
+            {/* Comment row */}
+            <div className="my-3 flex gap-2 relative">
+                {/* 1. Parent-এর avatar থেকে replies পর্যন্ত vertical লাইন */}
+                {
+                    hasReplies && isView && (
+                        <span
+                            className={`absolute -bottom-3.5 left-4.75 top-10 border-l-2 border-gray-700 dark:border-gray-700`}
+                        />
+                    )
+                }
 
-                {/* Part-2 */}
-                <div className="space-y-1">
-                    <div className="flex items-center gap-1 text-white">
-                        <h3>Ona mika</h3>
-                        <Dot />
-                        <span>41m</span>
+                <div className="flex gap-2">
+                    {/* Part-1 */}
+                    <div className="size-9 rounded-full flex items-center justify-center text-[12px] font-bold tracking-[0.03em] shrink-0 bg-[#6C63FF25] text-[#6C63FF]">
+                        <Image
+                            src={comment.avatar}
+                            alt={comment.user}
+                            width={20}
+                            height={20}
+                            className="w-full h-full rounded-full"
+                        />
                     </div>
 
-                    <p className="text-slate-200">
-                        A beautiful, fast, and modern React UI library for building accessible and customizable web applications with ease.
-                    </p>
+                    {/* Part-2 */}
+                    <div className="space-y-1">
+                        <div className="bg-[#1e2939] p-3 rounded-xl flex justify-between gap-12">
+                            {/* Comment Info */}
+                            <div>
+                                <div className="flex items-center gap-1 text-white">
+                                    <h3>{comment.user}</h3>
+                                    <Dot />
+                                    <span>{comment.timeStamp}</span>
+                                </div>
 
-                    <div className="mt-2 flex items-center gap-2">
-                        <span className="cursor-pointer hover:bg-[#e8eaf02d] py-1 px-2 rounded-xl hover:text-[#e8eaf0b2]">
-                            <ThumbsUp size={16} />
-                        </span>
+                                <p className="text-slate-200">
+                                    {comment.text}
+                                </p>
+                            </div>
 
-                        <span className="cursor-pointer hover:bg-[#e8eaf02d] py-1 px-2 rounded-xl hover:text-[#e8eaf0b2]">
-                            <ThumbsDown size={16} />
-                        </span>
-
-                        <span onClick={() => setIsClicked(true)} className="font-medium cursor-pointer hover:bg-[#e8eaf02d] hover:text-[#e8eaf0b2] py-1 px-3 rounded-xl">
-                            Reply
-                        </span>
-
-                        <div className="flex items-center gap-2 font-semibold cursor-pointer hover:bg-[#e8eaf02d] hover:text-[#e8eaf0b2] py-1 px-3 rounded-xl">
-                            <IoIosArrowDown />
-                            <span>
-                                View 5 reply
-                            </span>
+                            {/* Actions */}
+                            <ActionsMenu />
                         </div>
-                    </div>
 
-                    {
-                        isClicked && <RepliedCommentBox />
-                    }
+                        <div className="mt-2 flex items-center gap-2">
+                            <span className="cursor-pointer hover:bg-[#e8eaf02d] py-1 px-2 rounded-xl hover:text-[#e8eaf0b2]">
+                                <ThumbsUp size={16} />
+                            </span>
+
+                            <span className="cursor-pointer hover:bg-[#e8eaf02d] py-1 px-2 rounded-xl hover:text-[#e8eaf0b2]">
+                                <ThumbsDown size={16} />
+                            </span>
+
+                            <span onClick={() => setIsReplyBox(!isReplyBox)} className="font-medium cursor-pointer hover:bg-[#e8eaf02d] hover:text-[#e8eaf0b2] py-1 px-3 rounded-xl">
+                                Reply
+                            </span>
+
+                            {/* Reply toggle: শুধু replies থাকলে */}
+                            {
+                                hasReplies && (
+                                    <div
+                                        onClick={() => setIsView(!isView)}
+                                        className="flex items-center gap-2 font-semibold cursor-pointer hover:bg-[#e8eaf02d] hover:text-[#e8eaf0b2] py-1 px-3 rounded-xl"
+                                    >
+                                        <IoIosArrowDown
+                                            className={`transition-transform ${isView ? "rotate-180" : ""}`}
+                                        />
+                                        <span>
+                                            {isView ? "Hide" : "View"} {comment.replies.length} reply
+                                        </span>
+                                    </div>
+                                )
+                            }
+                        </div>
+
+                        {/* Replied Comment Box */}
+                        {
+                            isReplyBox && <RepliedCommentBox />
+                        }
+                    </div>
                 </div>
             </div>
 
-            {/* Part-3 */}
-            <div className="col-span-3 flex flex-col justify-between items-center">
-                <Button isIconOnly aria-label="More options" className='bg-transparent border border-slate-500 px-3 hover:bg-[#4b5563c7]'>
-                    <Ellipsis />
-                </Button>
-            </div>
-        </div>
+            {/* Nested replies (recursive) */}
+            {
+                hasReplies && isView && (
+                    <ul className="ml-4.75">
+                        {
+                            comment.replies.map((reply, i) => (
+                                <Comment
+                                    key={reply.id}
+                                    comment={reply}
+                                    isReply
+                                    isLast={i === comment.replies.length - 1}
+                                />
+                            ))
+                        }
+                    </ul>
+                )
+            }
+        </li>
     );
 };
 

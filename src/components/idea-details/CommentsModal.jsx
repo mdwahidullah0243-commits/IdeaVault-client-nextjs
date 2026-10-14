@@ -3,6 +3,7 @@ import { MessagesSquare } from "lucide-react";
 import SortingBox from "./SortingBox";
 import MainCommentBox from "./MainCommentBox";
 import Comment from "./Comment";
+import { comments } from "@/lib/data";
 
 const CommentsModal = () => {
     return (
@@ -29,7 +30,13 @@ const CommentsModal = () => {
                             <SortingBox />
 
                             {/* Actual Comments Info */}
-                            <Comment />
+                            <ul className="space-y-1">
+                                {
+                                    comments.map((c) => (
+                                        <Comment key={c.id} comment={c} />
+                                    ))
+                                }
+                            </ul>
                         </Modal.Body>
 
                         <Modal.Footer className="justify-start items-start">

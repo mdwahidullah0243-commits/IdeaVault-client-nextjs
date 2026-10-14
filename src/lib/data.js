@@ -162,3 +162,45 @@ export const trendingIdeas = [
         tags: ['health', 'wellness', 'fitness']
     },
 ];
+
+export const comments = [
+    {
+        id: 1,
+        user: "Rahim Uddin",
+        avatar: "https://i.pravatar.cc/80?img=12",
+        text: "Next.js দিয়ে এই প্রজেক্টটা দারুণ হয়েছে!",
+        timeStamp: "2h",
+        replies: [
+            {
+                id: 2,
+                user: "Karim Hasan",
+                avatar: "https://i.pravatar.cc/80?img=33",
+                text: "ধন্যবাদ ভাই! Tailwind দিয়েই সব করেছি।",
+                timeStamp: "1h",
+                replies: [
+                    {
+                        id: 3,
+                        user: "Nusrat Jahan",
+                        avatar: "https://i.pravatar.cc/80?img=47",
+                        text: "কোড শেয়ার করলে ভালো হতো।",
+                        timeStamp: "45m",
+                    },
+                ],
+            },
+            {
+                id: 4,
+                user: "Sadia Akter",
+                avatar: "https://i.pravatar.cc/80?img=5",
+                text: "UI অনেক clean লাগছে 👌",
+                timeStamp: "30m",
+            },
+        ],
+    },
+    {
+        id: 5,
+        user: "Tanvir Ahmed",
+        avatar: "https://i.pravatar.cc/80?img=15",
+        text: "Dark mode সাপোর্ট আছে কি?",
+        timeStamp: "10m",
+    },
+];
