@@ -1,4 +1,4 @@
-import { listClassName, trendingIdeas } from "@/lib/data";
+import { listClassName, listClassName2, trendingIdeas } from "@/lib/data";
 import { Tabs } from "@heroui/react";
 import CommentIdeaPost from "./CommentIdeaPost";
 
@@ -6,7 +6,7 @@ const InteractionTabs = () => {
     return (
         <Tabs className="w-full">
             <Tabs.ListContainer className="max-w-sm rounded-none bg-transparent">
-                <Tabs.List aria-label="Billing cycle" className={listClassName}>
+                <Tabs.List aria-label="Idea interactions" className={listClassName}>
                     <Tabs.Tab id="comments">
                         Comments ({trendingIdeas.length})
                         <Tabs.Indicator />

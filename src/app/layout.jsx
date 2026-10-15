@@ -2,6 +2,7 @@ import { DM_Sans, Sora, Syne } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
+import ThemeProviders from "@/providers/ThemeProvider";
 
 export const sora = Sora({
   subsets: ['latin']
@@ -24,16 +25,19 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${sora.className} h-full antialiased bg-[#0b0d14] text-[#e8eaf0]`}
     >
-      <body className="min-h-full flex flex-col">
-        <Navbar />
+      <body className="bg-background text-foreground min-h-full flex flex-col">
+        <ThemeProviders>
+          <Navbar />
 
-        <main>
-          {children}
-        </main>
+          <main>
+            {children}
+          </main>
 
-        <Footer />
+          <Footer />
+        </ThemeProviders>
       </body>
     </html>
   );

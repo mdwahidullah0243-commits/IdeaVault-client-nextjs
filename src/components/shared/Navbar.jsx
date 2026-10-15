@@ -1,6 +1,7 @@
 import { navItems } from "@/lib/data";
 import NavItem from "./NavItem";
 import NavRightPart from "./NavRightPart";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 const Navbar = () => {
     return (
@@ -26,6 +27,8 @@ const Navbar = () => {
                     ))
                 }
             </div>
+
+            <ThemeSwitcher />
 
             {/* Right side */}
             <NavRightPart />

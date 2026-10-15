@@ -1,6 +1,21 @@
 @import "tailwindcss";
 @import "@heroui/styles";
-@plugin "daisyui"; 
+@plugin "daisyui";
+
+
+/* Light Theme */
+:root,
+[data-theme="light"] {
+    --accent: #e8eaf0;
+    --accent-foreground: #0b0d14;
+}
+
+/* Dark Theme */
+.dark,
+[data-theme="dark"] {
+    --accent: #0b0d14;
+    --accent-foreground: #e8eaf0;
+}
 
 
 .slide-enter {
