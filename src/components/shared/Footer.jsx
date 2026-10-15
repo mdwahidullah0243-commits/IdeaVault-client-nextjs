@@ -1,4 +1,4 @@
-import { Lightbulb } from "lucide-react";
+import { Lightbulb, Send } from "lucide-react";
 import { BsFacebook } from "react-icons/bs";
 import { FaSquareInstagram, FaXTwitter } from "react-icons/fa6";
 import { GrLinkedinOption } from "react-icons/gr";
@@ -26,38 +26,38 @@ const Footer = () => {
                             Be the first to know when new crowdsourcing projects are posted
                         </p>
 
-                        <div className="flex items-center bg-gray-800 px-4 py-3">
+                        <div className="flex items-center bg-gray-800 pl-4 rounded-xl">
                             <input
                                 type="email"
                                 placeholder="Enter email"
                                 className="bg-transparent outline-none flex-1 text-sm"
                             />
-                            <span className="text-white text-lg cursor-pointer">↗</span>
+                            <span className="text-slate-300 text-lg cursor-pointer hover:bg-slate-600 p-2 rounded-full">
+                                <Send />
+                            </span>
                         </div>
                     </div>
 
-                    {/* Quick Links */}
+                    {/* Platform */}
                     <div>
-                        <h3 className="text-white mb-3 tracking-wide">QUICK LINKS</h3>
+                        <h3 className="text-white mb-3 tracking-wide">PLATFORM</h3>
                         <ul className="space-y-2">
-                            <li className="hover:text-white cursor-pointer">Home</li>
-                            <li className="hover:text-white cursor-pointer">Destinations</li>
-                            <li className="hover:text-white cursor-pointer">My Bookings</li>
-                            <li className="hover:text-white cursor-pointer">My Profile</li>
+                            <li className="hover:text-white cursor-pointer">Browse Ideas</li>
+                            <li className="hover:text-white cursor-pointer">Submit Idea</li>
+                            <li className="hover:text-white cursor-pointer">Profile</li>
                         </ul>
                     </div>
 
-                    {/* Support */}
+                    {/* Categories */}
                     <div>
-                        <h3 className="text-white mb-3 tracking-wide">SUPPORT</h3>
+                        <h3 className="text-white mb-3 tracking-wide">CATEGORIES</h3>
                         <ul className="space-y-2">
-                            <li className="hover:text-white cursor-pointer">Help Center</li>
-                            <li className="hover:text-white cursor-pointer">
-                                Terms of Service
-                            </li>
-                            <li className="hover:text-white cursor-pointer">
-                                Privacy Policy
-                            </li>
+                            <li className="hover:text-white cursor-pointer">Tech</li>
+                            <li className="hover:text-white cursor-pointer">AI</li>
+                            <li className="hover:text-white cursor-pointer">Health</li>
+                            <li className="hover:text-white cursor-pointer">Education</li>
+                            <li className="hover:text-white cursor-pointer">Finance</li>
+                            <li className="hover:text-white cursor-pointer">Productivity</li>
                         </ul>
                     </div>
 
