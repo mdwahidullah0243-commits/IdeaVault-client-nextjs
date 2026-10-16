@@ -1,11 +1,20 @@
+'use client';
+
 import { format } from "date-fns";
+import { useEffect, useState } from "react";
 
 const CommentIdeaPost = ({ idea }) => {
+    const [date, setDate] = useState(null);
+
+    useEffect(() => {
+        setDate(new Date());
+    }, []);
+
     return (
         <div className="hover:bg-[#6c63ff14] hover:border-[#6c63ff4d] hover:-translate-y-1 cursor-pointer transition-all duration-200 space-y-2 border border-slate-700 rounded-xl p-4">
             <p className="text-sm font-medium text-slate-500">
                 {
-                    format(new Date(), 'M/d/yyyy')
+                    date ? format(new Date(), 'M/d/yyyy') : ''
                 }
             </p>
 

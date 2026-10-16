@@ -1,6 +1,15 @@
+'use client';
+
 import { format } from "date-fns";
+import { useEffect, useState } from "react";
 
 const HeadingTextPart = () => {
+    const [date, setDate] = useState(null);
+
+    useEffect(() => {
+        setDate(new Date());
+    }, []);
+
     return (
         <div className="mb-4 space-y-2">
             <h3 className="text-base font-bold text-[#e8eaf0]">
@@ -9,7 +18,7 @@ const HeadingTextPart = () => {
 
             <p className="text-sm font-medium text-[#e8eaf0b2]">
                 {
-                    format(new Date(), 'MMM d, yyyy')
+                    date ? format(new Date(), 'MMM d, yyyy') : ''
                 }
             </p>
 

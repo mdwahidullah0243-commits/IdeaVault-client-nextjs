@@ -5,7 +5,11 @@ import TagGroupBasic from "@/components/idea-details/TagGroupBasic";
 import { Separator } from "@heroui/react";
 import Image from "next/image";
 
-const IdeaDetailsPage = () => {
+export const instant = false;
+
+const IdeaDetailsPage = async ({ params }) => {
+    const {detailsId} = await params;
+
     return (
         <div className="w-4/5 lg:w-3/5 mx-auto mb-20 mt-12 flex flex-col justify-between bg-[#ffffff0a] border border-[#ffffff14] rounded-2xl p-5 transition-all duration-300">
             <div className="mb-4">
