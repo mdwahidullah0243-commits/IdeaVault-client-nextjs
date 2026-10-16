@@ -41,7 +41,7 @@ const IdeaCard = ({idea, index}) => {
                 </div>
 
                 <Link href={`/idea-details/${idea.id}`}>
-                    <button className="bg-transparent text-[#9ca3b8] border border-[#ffffff1f] rounded-[10px] py-3 px-6 text-base font-medium cursor-pointer transition-all duration-200 hover:border-[#6C63FF] hover:text-[#6C63FF]">
+                    <button className="bg-transparent text-[#9ca3b8] border border-[#ffffff1f] rounded-[10px] py-3 px-3 sm:px-6 text-base font-medium cursor-pointer transition-all duration-200 hover:border-[#6C63FF] hover:text-[#6C63FF]">
                         View Details
                     </button>
                 </Link>

@@ -8,9 +8,17 @@ const ProfileManagement = ({ setIsLoggedIn }) => {
 
     return (
         <div className="relative">
+            <Avatar
+                onClick={() => setProfileOpen((p) => !p)}
+                className="only-avatar"
+            >
+                <Avatar.Image alt="John Doe" src="https://img.heroui.chat/image/avatar?w=400&h=400&u=3" />
+                <Avatar.Fallback>JD</Avatar.Fallback>
+            </Avatar>
+
             <div
                 onClick={() => setProfileOpen((p) => !p)}
-                className={`flex cursor-pointer items-center gap-2 rounded-[10px] border border-white/10 px-2.5 py-1.5 transition-all duration-200 ${profileOpen ? "bg-[#6c63ff1a]" : "bg-transparent"
+                className={`avatar-box cursor-pointer items-center gap-2 rounded-[10px] border border-white/10 px-2.5 py-1.5 transition-all duration-200 ${profileOpen ? "bg-[#6c63ff1a]" : "bg-transparent"
                     }`}
             >
                 <Avatar>

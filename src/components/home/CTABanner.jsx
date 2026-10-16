@@ -10,16 +10,16 @@ const CTABanner = () => {
                     Ready to Innovate?
                 </h3>
 
-                <h2 className="text-4xl font-extrabold tracking-[-0.02em] text-white mb-4">
+                <h2 className="text-2xl sm:text-4xl font-extrabold tracking-[-0.02em] text-white mb-4">
                     Share Your Next Big Idea
                 </h2>
 
-                <p className="text-base text-[#9ca3b8] mb-7 max-w-120 mx-auto">
+                <p className="text-sm sm:text-base text-[#9ca3b8] mb-7 max-w-120 mx-auto">
                     It only takes 2 minutes to post your concept and start getting community feedback.
                 </p>
 
                 <Link href={`/add-idea`}>
-                    <button className="mx-auto flex gap-2 items-center bg-linear-135 from-[#6C63FF] to-[#a855f7] text-white border-none rounded-[10px] py-3 px-6 text-base font-semibold cursor-pointer transition-all duration-200 tracking-[0.02em] hover:-translate-y-0.5 hover:shadow-[0px_8px_24px] hover:shadow-[#6c63ff66]">
+                    <button className="mx-auto flex gap-2 items-center bg-linear-135 from-[#6C63FF] to-[#a855f7] text-white border-none rounded-[10px] py-3 px-3 sm:px-6 text-sm sm:text-base font-semibold cursor-pointer transition-all duration-200 tracking-[0.02em] hover:-translate-y-0.5 hover:shadow-[0px_8px_24px] hover:shadow-[#6c63ff66]">
                         Post Your Idea
                     </button>
                 </Link>

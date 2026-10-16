@@ -20,7 +20,7 @@ const Navbar = () => {
             </div>
 
             {/* NavLinks */}
-            <div className="flex items-center gap-2">
+            <div className="max-xl:hidden flex items-center gap-2">
                 {
                     navItems.map((item) => (
                         <NavItem key={item.id} item={item} />
@@ -28,7 +28,9 @@ const Navbar = () => {
                 }
             </div>
 
-            <ThemeSwitcher />
+            <div className="max-md:hidden">
+                <ThemeSwitcher />
+            </div>
 
             {/* Right side */}
             <NavRightPart />

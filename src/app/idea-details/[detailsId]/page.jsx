@@ -7,14 +7,14 @@ import Image from "next/image";
 
 const IdeaDetailsPage = () => {
     return (
-        <div className="w-3/5 mx-auto mb-20 mt-12 flex flex-col justify-between bg-[#ffffff0a] border border-[#ffffff14] rounded-2xl p-5 transition-all duration-300">
+        <div className="w-4/5 lg:w-3/5 mx-auto mb-20 mt-12 flex flex-col justify-between bg-[#ffffff0a] border border-[#ffffff14] rounded-2xl p-5 transition-all duration-300">
             <div className="mb-4">
                 <Image
                     src={`https://i.ibb.co.com/hFLnZdj0/coach-nova-21237327280.png`}
                     alt={'title'}
                     width={300}
                     height={200}
-                    className="w-full h-70 rounded-xl"
+                    className="w-full max-sm:h-50 sm:h-60 md:h-70 rounded-xl"
                 />
             </div>
 
@@ -34,14 +34,14 @@ const IdeaDetailsPage = () => {
 
             <Separator className="bg-[#e8eaf027] mt-8" />
 
-            <div className="mt-6 flex items-center gap-25">
+            <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-15 max-sm:gap-6 md:gap-25">
                 {/* Target Audience */}
                 <SimpleTitleDesc
                     title={'Target Audience'}
                     description={'Health-Conscious individuals aged 25-45'}
                 />
 
-                <Separator orientation="vertical" className="bg-[#e8eaf027]" />
+                <Separator orientation="vertical" className="max-sm:hidden bg-[#e8eaf027]" />
 
                 {/* Budget */}
                 <SimpleTitleDesc

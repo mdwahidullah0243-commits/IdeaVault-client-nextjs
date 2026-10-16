@@ -5,7 +5,7 @@ import { FaRegLightbulb } from "react-icons/fa";
 const HowDoesWork = () => {
     return (
         <div className="w-10/12 mx-auto my-15 space-y-10">
-            <div className="text-center space-y-3">
+            <div className="text-center space-y-5 sm:space-y-3">
                 <h2 className="text-3xl font-semibold">
                     How Does IdeaVault Work?
                 </h2>
@@ -15,7 +15,7 @@ const HowDoesWork = () => {
                 </p>
             </div>
 
-            <div className="grid grid-cols-3 gap-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
                 <WorkCard
                     icon={<Send size={40} color="#fb5629" />}
                     title={'Submit Your Ideas'}

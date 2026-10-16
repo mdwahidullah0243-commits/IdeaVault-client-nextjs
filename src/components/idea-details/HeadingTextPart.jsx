@@ -13,7 +13,7 @@ const HeadingTextPart = () => {
                 }
             </p>
 
-            <p className="mt-4 text-sm font-medium text-[#e8eaf0b2] line-clamp-3">
+            <p className="mt-4 text-sm font-medium text-[#e8eaf0b2]">
                 An AI-powered mental health coach is a digital tool that uses conversational artificial intelligence to offer 24/7 support for stress, anxiety, low mood, and daily emotional wellness.
             </p>
         </div>

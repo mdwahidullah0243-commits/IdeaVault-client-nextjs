@@ -37,7 +37,7 @@ const Banner = () => {
             <div style={{ border: `1px solid ${slide.accent}10` }} className={`absolute w-150 h-150 rounded-[50%] border top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] pointer-events-none`} />
             <div style={{ border: `1px solid ${slide.accent}06` }} className={`absolute w-250 h-250 rounded-[50%] border top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] pointer-events-none`} />
 
-            <div className="relative z-2 max-w-275 my-0 mx-auto py-15 px-8 flex items-center justify-between w-full gap-10">
+            <div className="relative z-2 max-w-275 my-0 mx-auto py-15 max-md:pt-30 px-8 flex max-md:flex-col-reverse items-center justify-between w-full gap-10 max-md:gap-30">
                 <SlideLeftPart
                     currentSlide={currentSlide}
                     goToSlide={goToSlide}

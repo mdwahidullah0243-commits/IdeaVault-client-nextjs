@@ -4,7 +4,7 @@ const Stats = () => {
     return (
         <section className="bg-[#ffffff05] border-b border-[#ffffff0d]">
             <div className="w-10/12 mx-auto px-10">
-                <div className="grid grid-cols-4 py-6 border-y border-[#ffffff0f]">
+                <div className=" grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-0 py-6 border-y border-[#ffffff0f]">
                     {
                         stats.map((stat) => (
                             <div key={stat.id} className="text-center">

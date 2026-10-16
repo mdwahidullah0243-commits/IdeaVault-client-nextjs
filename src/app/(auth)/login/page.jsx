@@ -38,7 +38,7 @@ const LoginPage = () => {
     // };
 
     return (
-        <div className="w-2/5 mx-auto my-15 space-y-7">
+        <div className="max-w-120 sm:max-w-150 mx-auto my-15 space-y-7">
             <div className="text-center space-y-2">
                 <h2 className={`text-2xl font-semibold`}>
                     Welcome Back
@@ -49,19 +49,19 @@ const LoginPage = () => {
             </div>
 
             <div className="rounded-xl flex items-center justify-center bg-[#1e2939] p-8">
-                <Surface className="w-full min-w-95 bg-[#1e2939]">
+                <Surface className="w-full bg-[#1e2939]">
                     <Form>
                         <Fieldset className="w-full">
                             <Fieldset.Group>
                                 <TextField isRequired name="email" type="email">
                                     <Label className="text-white">Email</Label>
-                                    <Input className='bg-[#2a3546] text-slate-300' placeholder="Enter your email" variant="secondary" />
+                                    <Input className='bg-[#2a3546] text-slate-300 placeholder:text-white/30 border-2 focus:border-[#10ac84]/70' placeholder="Enter your email" variant="secondary" />
                                     <FieldError />
                                 </TextField>
 
                                 <TextField isRequired name="password" type="password">
                                     <Label className="text-white">Password</Label>
-                                    <Input className='bg-[#2a3546] text-slate-300' placeholder="Enter your password" variant="secondary" />
+                                    <Input className='bg-[#2a3546] text-slate-300 placeholder:text-white/30 border-2 focus:border-[#10ac84]/70' placeholder="Enter your password" variant="secondary" />
                                     <FieldError />
                                 </TextField>
                             </Fieldset.Group>

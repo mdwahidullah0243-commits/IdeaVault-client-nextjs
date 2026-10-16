@@ -1,8 +1,11 @@
-import { DM_Sans, Sora, Syne } from "next/font/google";
+import { DM_Sans, Sora, Syne, Geist } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
 import ThemeProviders from "@/providers/ThemeProvider";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const sora = Sora({
   subsets: ['latin']
@@ -26,7 +29,7 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${sora.className} h-full antialiased bg-[#0b0d14] text-[#e8eaf0]`}
+      className={cn("h-full", "antialiased", "bg-[#0b0d14]", "text-[#e8eaf0]", sora.className, "font-sans", geist.variable)}
     >
       <body className="bg-background text-foreground min-h-full flex flex-col">
         <ThemeProviders>

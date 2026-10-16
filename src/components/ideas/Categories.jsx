@@ -1,12 +1,11 @@
 import { ListBox, Select } from "@heroui/react";
-import { ChevronDown } from "lucide-react";
 
 const Categories = () => {
     return (
-        <Select className="w-60" placeholder="All Categories">
-            <Select.Trigger className="items-center focus:border-[#6c63ff80] focus:bg-[#6c63ff14] bg-[#ffffff0f] border border-[#ffffff1a] rounded-xl py-2.5 pl-4 text-[#e8eaf0] text-sm outline-none transition-all duration-200">
-                <Select.Value />
-                <ChevronDown color="#6b7280" />
+        <Select className="w-40 sm:w-60" placeholder="All Categories">
+            <Select.Trigger className="items-center focus:border-[#6c63ff80] focus:bg-[#6c63ff14] bg-[#ffffff0f] border border-[#ffffff1a] rounded-xl py-1 sm:py-2.5 pl-4 text-[#e8eaf0] text-sm outline-none transition-all duration-200">
+                <Select.Value className={'data-placeholder:text-xs data-placeholder:text-[#4b5563]'} />
+                <Select.Indicator />
             </Select.Trigger>
             
             <Select.Popover className='bg-[#0b0d14] border border-[#ffffff14]'>

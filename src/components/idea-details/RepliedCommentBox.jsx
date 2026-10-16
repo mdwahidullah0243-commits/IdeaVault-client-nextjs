@@ -11,7 +11,7 @@ const RepliedCommentBox = () => {
             <Surface className="flex flex-col gap-3 w-full rounded-3xl bg-[#18181b]">
                 <TextField variant="secondary" className=''>
                     <TextArea
-                        className="bg-[#2e2e30ad] text-slate-200 resize-none w-full max-h-50"
+                        className="border-2 focus:border-[#0485f7] bg-[#2e2e30ad] text-slate-200 resize-none w-full max-h-50"
                         placeholder="Reply to Ratul"
                     />
                 </TextField>

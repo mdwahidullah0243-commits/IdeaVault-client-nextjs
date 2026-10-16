@@ -18,9 +18,9 @@ const CommentsModal = () => {
             <Modal.Backdrop>
                 <Modal.Container>
                     <Modal.Dialog className="max-w-170 bg-[#18181b]">
-                        <Modal.CloseTrigger />
+                        <Modal.CloseTrigger className="text-white" />
                         <Modal.Header className="border-b border-slate-300">
-                            <Modal.Heading className="pb-2 text-white text-center text-xl font-semibold">
+                            <Modal.Heading className="pb-2 text-white text-center text-lg sm:text-xl font-semibold">
                                 Mohammad's Post
                             </Modal.Heading>
                         </Modal.Header>

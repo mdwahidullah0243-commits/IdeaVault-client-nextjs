@@ -1,3 +1,11 @@
+import { House, Lightbulb, MailBadge } from "lucide-react";
+import { BsDatabaseFillAdd } from "react-icons/bs";
+import { CgProfile } from "react-icons/cg";
+import { FaRegCommentDots } from "react-icons/fa";
+import { FcIdea } from "react-icons/fc";
+import { SiSimplelogin } from "react-icons/si";
+import { TbSettings } from "react-icons/tb";
+
 export const navItems = [
     {
         id: 1,
@@ -242,19 +250,24 @@ export const tagSuggestions = ["mobile", "web", "B2B", "B2C", "marketplace", "au
 
 export const budgetRanges = ["$1,000", "$1,000 – $10,000", "$10,000 – $50,000", "$50,000 – $200,000", "$200,000+", "No Budget"];
 
-export const profileMenu = [
-    { icon: "👤", label: "View Profile", page: "/profile" },
-    { icon: "⚙️", label: "Edit Profile", page: "/profile/edit" },
-    { icon: "💡", label: "My Ideas", page: "/my-ideas" },
-    { icon: "💬", label: "My Interactions", page: "/my-interactions" },
-    { icon: "🔔", label: "Notifications", page: "/" },
+export const navItemsMenu = [
+    { icon: <CgProfile size={20} />, label: "View Profile", page: "/profile" },
+    { icon: <TbSettings size={20} />, label: "Edit Profile", page: "/profile/edit" },
+    { icon: <House size={20} />, label: 'Home', page: '/' },
+    { icon: <Lightbulb size={20} />, label: 'Ideas', page: '/ideas' },
+    { icon: <BsDatabaseFillAdd size={20} />, label: 'Add Idea', page: '/add-idea' },
+    { icon: <FcIdea size={20} />, label: "My Ideas", page: "/my-ideas" },
+    { icon: <FaRegCommentDots size={20} />, label: "My Interactions", page: "/my-interactions" },
+    { icon: <SiSimplelogin size={20} />, label: "Login", page: "/login" },
+    { icon: <MailBadge size={20} />, label: "Register", page: "/register" }
 ];
 
+// Tabs class
 export const listClassName = [
     "rounded-xl border border-[#051727] bg-[#060b10] p-1",
     "**:data-[slot=tabs-tab]:rounded-lg",
     "**:data-[slot=tabs-tab]:bg-transparent",
-    "**:data-[slot=tabs-tab]:text-muted",
+    "**:data-[slot=tabs-tab]:text-slate-400",
     "**:data-[slot=tabs-tab]:opacity-100",
     "**:data-[slot=tabs-tab]:transition-colors",
     "**:data-[slot=tabs-tab]:data-[hovered=true]:not-data-[selected=true]:bg-[#101828]",

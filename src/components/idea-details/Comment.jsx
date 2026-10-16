@@ -62,10 +62,10 @@ const Comment = ({ comment, isReply = false, isLast = true }) => {
                         <div className="bg-[#1e2939] p-3 rounded-xl flex justify-between gap-12">
                             {/* Comment Info */}
                             <div>
-                                <div className="flex items-center gap-1 text-white">
+                                <div className="flex flex-col sm:flex-row sm:items-center gap-0 sm:gap-1 text-white">
                                     <h3>{comment.user}</h3>
-                                    <Dot />
-                                    <span>{comment.timeStamp}</span>
+                                    <Dot className="max-sm:hidden" />
+                                    <span className="max-sm:text-slate-500">{comment.timeStamp}</span>
                                 </div>
 
                                 <p className="text-slate-200">
@@ -77,16 +77,16 @@ const Comment = ({ comment, isReply = false, isLast = true }) => {
                             <ActionsMenu />
                         </div>
 
-                        <div className="mt-2 flex items-center gap-2">
+                        <div className="mt-2 flex items-center gap-1 sm:gap-2">
                             <span className="cursor-pointer hover:bg-[#e8eaf02d] py-1 px-2 rounded-xl hover:text-[#e8eaf0b2]">
-                                <ThumbsUp size={16} />
+                                <ThumbsUp color="#e8eaf0b2" size={16} />
                             </span>
 
                             <span className="cursor-pointer hover:bg-[#e8eaf02d] py-1 px-2 rounded-xl hover:text-[#e8eaf0b2]">
-                                <ThumbsDown size={16} />
+                                <ThumbsDown color="#e8eaf0b2" size={16} />
                             </span>
 
-                            <span onClick={() => setIsReplyBox(!isReplyBox)} className="font-medium cursor-pointer hover:bg-[#e8eaf02d] hover:text-[#e8eaf0b2] py-1 px-3 rounded-xl">
+                            <span onClick={() => setIsReplyBox(!isReplyBox)} className="font-medium cursor-pointer hover:bg-[#e8eaf02d] text-[#e8eaf0b2] py-1 px-3 rounded-xl">
                                 Reply
                             </span>
 
@@ -95,7 +95,7 @@ const Comment = ({ comment, isReply = false, isLast = true }) => {
                                 hasReplies && (
                                     <div
                                         onClick={() => setIsView(!isView)}
-                                        className="flex items-center gap-2 font-semibold cursor-pointer hover:bg-[#e8eaf02d] hover:text-[#e8eaf0b2] py-1 px-3 rounded-xl"
+                                        className="flex items-center gap-2 font-semibold cursor-pointer hover:bg-[#e8eaf02d] text-[#e8eaf0b2] py-1 px-3 rounded-xl"
                                     >
                                         <IoIosArrowDown
                                             className={`transition-transform ${isView ? "rotate-180" : ""}`}

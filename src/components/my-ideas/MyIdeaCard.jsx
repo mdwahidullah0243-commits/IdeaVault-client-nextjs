@@ -5,7 +5,7 @@ import AlertModalForDelete from "./AlertModalForDelete";
 
 const MyIdeaCard = ({ idea }) => {
     return (
-        <div className="bg-[#ffffff0a] border border-[#ffffff14] rounded-2xl p-5 flex justify-between items-center gap-4 hover:bg-[#6c63ff14] hover:border-[#6c63ff4d] hover:-translate-y-1 transition-all duration-200 cursor-pointer">
+        <div className="bg-[#ffffff0a] border border-[#ffffff14] rounded-2xl p-5 flex flex-col xl:flex-row justify-between xl:items-center gap-4 hover:bg-[#6c63ff14] hover:border-[#6c63ff4d] hover:-translate-y-1 transition-all duration-200 cursor-pointer">
             <div className="">
                 <div className="inline-block py-1 px-3 rounded-lg text-xs font-semibold tracking-wider uppercase" style={{ background: `${idea.color}18`, color: idea.color, border: `1px solid ${idea.color}30`, marginBottom: 8 }}>
                     {idea.category}
@@ -15,7 +15,7 @@ const MyIdeaCard = ({ idea }) => {
                 </h3>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center flex-wrap gap-3">
                 <Link href={`/idea-details/${idea.id}`}>
                     <button className="bg-transparent text-[#9ca3b8] border border-[#ffffff1f] rounded-[10px] py-2 px-3.5 text-sm font-medium cursor-pointer transition-all duration-200 hover:border-[#6C63FF] hover:text-[#6C63FF]">
                         View Details

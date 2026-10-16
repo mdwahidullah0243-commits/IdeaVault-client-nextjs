@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@heroui/react";
-import { MonitorCog, Moon, Sun } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
@@ -18,17 +18,17 @@ const ThemeSwitcher = () => {
     const activeTheme = theme === "system" ? resolvedTheme : theme;
 
     return (
-        <div className="flex items-center gap-2 border bg-[#060b10] border-slate-600 rounded-full p-0.5">
+        <div className="flex items-center gap-2 border bg-transparent border-slate-600 rounded-full">
             <Button
-                variant={activeTheme === "light" ? "primary" : "secondary"}
                 onPress={() => setTheme("light")}
+                className={`${activeTheme === 'light' ? 'bg-white/80 text-black' : 'bg-transparent'}`}
             >
                 <Sun />
             </Button>
 
             <Button
-                variant={activeTheme === "dark" ? "primary" : "secondary"}
                 onPress={() => setTheme("dark")}
+                className={`${activeTheme === 'dark' ? 'bg-white/80 text-black' : 'bg-transparent text-white'}`}
             >
                 <Moon />
             </Button>

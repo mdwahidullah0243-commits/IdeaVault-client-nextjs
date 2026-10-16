@@ -5,8 +5,8 @@ import IdeaCard from "../shared/IdeaCard";
 
 const TrendingIdeas = () => {
     return (
-        <section className="w-10/12 mx-auto py-15 px-8">
-            <div className="flex justify-between items-end mb-8">
+        <section className="w-11/12 sm:w-10/12 mx-auto py-15 px-8">
+            <div className="flex justify-between flex-wrap max-sm:gap-5 items-end mb-8">
                 <div>
                     <h3 className="text-sm font-semibold tracking-[0.12em] uppercase text-[#6C63FF] mb-2.5">
                         Trending Now
@@ -23,7 +23,7 @@ const TrendingIdeas = () => {
                 </Link>
             </div>
 
-            <div className="grid grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
                     trendingIdeas.map((idea, index) => (
                         <IdeaCard key={idea.id} idea={idea} index={index} />
