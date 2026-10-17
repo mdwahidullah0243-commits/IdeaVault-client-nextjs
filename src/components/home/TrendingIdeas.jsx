@@ -2,6 +2,8 @@ import Link from "next/link";
 import IdeaCard from "../shared/IdeaCard";
 import { colors } from "@/lib/frontend-data";
 import { getSortedIdeas } from "@/lib/backend-data";
+import { Suspense } from "react";
+import MyLoading from "../shared/MyLoading";
 
 const TrendingIdeas = async () => {
     const ideas = await getSortedIdeas();
@@ -25,18 +27,20 @@ const TrendingIdeas = async () => {
                 </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {
-                    ideas.map((idea, index) => (
-                        <IdeaCard
-                            key={idea.id}
-                            idea={idea}
-                            index={index}
-                            color={colors[index % colors.length]}
-                        />
-                    ))
-                }
-            </div>
+            <Suspense fallback={<MyLoading />}>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {
+                        ideas.map((idea, index) => (
+                            <IdeaCard
+                                key={idea.id}
+                                idea={idea}
+                                index={index}
+                                color={colors[index % colors.length]}
+                            />
+                        ))
+                    }
+                </div>
+            </Suspense>
         </section>
     );
 };

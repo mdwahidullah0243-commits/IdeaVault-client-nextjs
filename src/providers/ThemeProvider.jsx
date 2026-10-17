@@ -8,7 +8,6 @@ const ThemeProviders = ({ children }) => {
             attribute="class"
             defaultTheme="dark"
             enableSystem
-            disableTransitionOnChange
         >
             {children}
         </ThemeProvider>

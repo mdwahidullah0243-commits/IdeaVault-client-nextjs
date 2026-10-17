@@ -1,8 +1,12 @@
 import Categories from "@/components/ideas/Categories";
 import SearchField from "@/components/ideas/SearchField";
 import IdeaCard from "@/components/shared/IdeaCard";
+import MyLoading from "@/components/shared/MyLoading";
 import { getIdeas } from "@/lib/backend-data";
 import { colors } from "@/lib/frontend-data";
+import { Suspense } from "react";
+
+// export const instant = false;
 
 const IdeasPage = async () => {
     const ideas = await getIdeas();
@@ -31,18 +35,20 @@ const IdeasPage = async () => {
             </div>
 
             {/* Ideas */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {
-                    ideas.map((idea, index) => (
-                        <IdeaCard
-                            key={idea._id}
-                            idea={idea}
-                            index={index}
-                            color={colors[index % colors.length]}
-                        />
-                    ))
-                }
-            </div>
+            <Suspense fallback={<MyLoading />}>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {
+                        ideas.map((idea, index) => (
+                            <IdeaCard
+                                key={idea._id}
+                                idea={idea}
+                                index={index}
+                                color={colors[index % colors.length]}
+                            />
+                        ))
+                    }
+                </div>
+            </Suspense>
         </div>
     );
 };
