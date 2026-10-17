@@ -1,8 +1,11 @@
 import Link from "next/link";
 import IdeaCard from "../shared/IdeaCard";
-import { ideas } from "@/lib/frontend-data";
+import { colors } from "@/lib/frontend-data";
+import { getSortedIdeas } from "@/lib/backend-data";
 
-const TrendingIdeas = () => {
+const TrendingIdeas = async () => {
+    const ideas = await getSortedIdeas();
+
     return (
         <section className="w-11/12 sm:w-10/12 mx-auto py-15 px-8">
             <div className="flex justify-between flex-wrap max-sm:gap-5 items-end mb-8">
@@ -25,7 +28,12 @@ const TrendingIdeas = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
                     ideas.map((idea, index) => (
-                        <IdeaCard key={idea.id} idea={idea} index={index} />
+                        <IdeaCard
+                            key={idea.id}
+                            idea={idea}
+                            index={index}
+                            color={colors[index % colors.length]}
+                        />
                     ))
                 }
             </div>
