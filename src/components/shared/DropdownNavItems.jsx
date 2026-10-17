@@ -10,7 +10,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { navItemsMenu } from "@/lib/data";
+import { navItemsMenu } from "@/lib/frontend-data";
 import Link from "next/link";
 import { RiMenu3Fill } from "react-icons/ri";
 import ThemeSwitcher from "./ThemeSwitcher";

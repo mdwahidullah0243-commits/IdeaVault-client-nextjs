@@ -1,4 +1,4 @@
-import { navItemsMenu } from "@/lib/data";
+import { navItemsMenu } from "@/lib/frontend-data";
 import Link from "next/link";
 import ThemeSwitcher from "./ThemeSwitcher";
 

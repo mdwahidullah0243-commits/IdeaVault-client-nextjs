@@ -1,6 +1,6 @@
 'use client';
 
-import { slides } from "@/lib/data";
+import { slides } from "@/lib/frontend-data";
 import { useEffect, useRef, useState } from "react";
 import SlideLeftPart from "./SlideLeftPart";
 
@@ -13,7 +13,7 @@ const Banner = () => {
             setCurrentSlide((p) => (p + 1) % slides.length);
         }, 4000);
 
-        return () => clearInterval(intervalRef.current)
+        return () => clearInterval(intervalRef.current);
     });
 
     const goToSlide = (i) => {

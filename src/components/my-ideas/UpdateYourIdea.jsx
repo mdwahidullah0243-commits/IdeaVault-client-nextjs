@@ -1,7 +1,7 @@
 import { FaEdit } from "react-icons/fa";
 import { Button, FieldError, Input, Label, ListBox, Modal, Surface, TextArea, TextField, Select } from "@heroui/react";
 import { MdBrowserUpdated } from "react-icons/md";
-import { budgetRanges, categories } from "@/lib/data";
+import { budgetRanges, categories } from "@/lib/frontend-data";
 
 const UpdateYourIdea = () => {
 

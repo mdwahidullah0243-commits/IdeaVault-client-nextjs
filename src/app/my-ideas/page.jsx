@@ -1,5 +1,5 @@
 import MyIdeaCard from "@/components/my-ideas/MyIdeaCard";
-import { trendingIdeas } from "@/lib/data";
+import { ideas } from "@/lib/frontend-data";
 
 const MyIdeasPage = () => {
     return (
@@ -11,7 +11,7 @@ const MyIdeasPage = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-1 gap-5 mt-8">
                 {
-                    trendingIdeas.slice(0, 3).map((idea) => (
+                    ideas.slice(0, 3).map((idea) => (
                         <MyIdeaCard key={idea.id} idea={idea} />
                     ))
                 }

@@ -3,7 +3,7 @@ import { MessagesSquare } from "lucide-react";
 import SortingBox from "./SortingBox";
 import MainCommentBox from "./MainCommentBox";
 import Comment from "./Comment";
-import { comments } from "@/lib/data";
+import { comments } from "@/lib/frontend-data";
 
 const CommentsModal = () => {
     return (

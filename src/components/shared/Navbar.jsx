@@ -1,4 +1,4 @@
-import { navItems } from "@/lib/data";
+import { navItems } from "@/lib/frontend-data";
 import NavItem from "./NavItem";
 import NavRightPart from "./NavRightPart";
 import ThemeSwitcher from "./ThemeSwitcher";

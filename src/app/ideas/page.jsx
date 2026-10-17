@@ -1,9 +1,12 @@
 import Categories from "@/components/ideas/Categories";
 import SearchField from "@/components/ideas/SearchField";
 import IdeaCard from "@/components/shared/IdeaCard";
-import { trendingIdeas } from "@/lib/data";
+import { getIdeas } from "@/lib/backend-data";
+import { colors } from "@/lib/frontend-data";
 
-const IdeasPage = () => {
+const IdeasPage = async () => {
+    const ideas = await getIdeas();
+
     return (
         <div className="w-9/12 mx-auto my-12 space-y-10">
             <div className="space-y-2">
@@ -30,8 +33,13 @@ const IdeasPage = () => {
             {/* Ideas */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
-                    trendingIdeas.map((idea, index) => (
-                        <IdeaCard key={idea.id} idea={idea} index={index} />
+                    ideas.map((idea, index) => (
+                        <IdeaCard
+                            key={idea._id}
+                            idea={idea}
+                            index={index}
+                            color={colors[index % colors.length]}
+                        />
                     ))
                 }
             </div>

@@ -1,4 +1,4 @@
-import { listClassName, listClassName2, trendingIdeas } from "@/lib/data";
+import { ideas, listClassName } from "@/lib/frontend-data";
 import { Tabs } from "@heroui/react";
 import CommentIdeaPost from "./CommentIdeaPost";
 
@@ -8,7 +8,7 @@ const InteractionTabs = () => {
             <Tabs.ListContainer className="max-w-sm rounded-none bg-transparent">
                 <Tabs.List aria-label="Idea interactions" className={listClassName}>
                     <Tabs.Tab id="comments">
-                        Comments ({trendingIdeas.length})
+                        Comments ({ideas.length})
                         <Tabs.Indicator />
                     </Tabs.Tab>
                     <Tabs.Tab id="liked">
@@ -21,7 +21,7 @@ const InteractionTabs = () => {
             <Tabs.Panel className="pt-3 text-sm text-muted" id="comments">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {
-                        trendingIdeas.map(idea => (
+                        ideas.map(idea => (
                             <CommentIdeaPost key={idea.id} idea={idea} />
                         ))
                     }

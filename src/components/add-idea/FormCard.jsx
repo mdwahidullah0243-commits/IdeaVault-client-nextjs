@@ -1,6 +1,6 @@
 import { useState } from "react";
 import BasicsPanel from "./BasicsPanel";
-import { formInfo, steps } from "@/lib/data";
+import { formInfo, steps } from "@/lib/frontend-data";
 import DetailsPanel from "./DetailsPanel";
 import SolutionPanel from "./SolutionPanel";
 import ReviewPanel from "./ReviewPanel";

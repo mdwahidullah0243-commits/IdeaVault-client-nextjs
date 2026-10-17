@@ -1,6 +1,6 @@
 import BrandHeader from "@/components/add-idea/BrandHeader";
 import IdeaPostForm from "@/components/add-idea/IdeaPostForm";
-import { positions, width } from "@/lib/data";
+import { positions, width } from "@/lib/frontend-data";
 
 const AddIdeaPage = () => {
     return (

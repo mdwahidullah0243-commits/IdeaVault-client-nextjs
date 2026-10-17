@@ -1,4 +1,4 @@
-import { steps, styles } from "@/lib/data";
+import { steps, styles } from "@/lib/frontend-data";
 import { FaCheck } from "react-icons/fa";
 
 const Stepper = ({ step }) => {

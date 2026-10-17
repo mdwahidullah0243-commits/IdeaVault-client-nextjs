@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const IdeaCard = ({idea, index}) => {
-    const {imageUrl, title, category, shortDesc, author, color, avatar} = idea;
+const IdeaCard = ({ idea, index, color }) => {
+    const { imageUrl, title, category, shortDesc, author, avatar, avatarText } = idea;
+
     return (
         <div className="flex flex-col justify-between hover:bg-[#6c63ff14] hover:border-[#6c63ff4d] hover:-translate-y-1 bg-[#ffffff0a] border border-[#ffffff14] rounded-2xl p-5 transition-all duration-300 cursor-pointer">
             <div className="mb-4">
@@ -27,14 +28,28 @@ const IdeaCard = ({idea, index}) => {
                     {title}
                 </h3>
 
-                <p className="text-sm font-medium text-[#e8eaf0b2] line-clamp-3">
+                <p className="text-sm font-medium text-[#e8eaf0b2]">
                     {shortDesc}
                 </p>
             </div>
 
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                    <div className="size-9 rounded-full flex items-center justify-center text-[12px] font-bold tracking-[0.03em] shrink-0" style={{ background: `${color}25`, color: color, width: 28, height: 28, fontSize: 10 }}>{avatar}</div>
+                    <div className="size-9 rounded-full flex items-center justify-center text-[12px] font-bold tracking-[0.03em] shrink-0" style={{ background: `${color}25`, color: color, width: 28, height: 28, fontSize: 10 }}>
+                        {
+                            avatar
+                                ?
+                                <Image
+                                    src={avatar}
+                                    alt={author}
+                                    width={80}
+                                    height={80}
+                                    className="w-full rounded-full"
+                                />
+                                :
+                                avatarText
+                        }
+                    </div>
                     <span className="text-[12px] text-[#6b7280]">
                         {author}
                     </span>

@@ -1,7 +1,7 @@
 import StepPanel from "./StepPanel";
 import Field from "./Field";
 import CharCount from "./CharCount";
-import { categories } from "@/lib/data";
+import { categories } from "@/lib/frontend-data";
 
 const styles = {
     inputErr: { borderColor: "#E94560", background: "#e945600d" },

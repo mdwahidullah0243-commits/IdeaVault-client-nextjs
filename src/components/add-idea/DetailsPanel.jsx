@@ -1,4 +1,4 @@
-import { budgetRanges, tagSuggestions } from "@/lib/data";
+import { budgetRanges, tagSuggestions } from "@/lib/frontend-data";
 import Field from "./Field";
 import StepPanel from "./StepPanel";
 import Image from "next/image";

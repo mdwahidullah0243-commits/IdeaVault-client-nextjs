@@ -1,4 +1,4 @@
-import { stats } from "@/lib/data";
+import { stats } from "@/lib/frontend-data";
 
 const Stats = () => {
     return (

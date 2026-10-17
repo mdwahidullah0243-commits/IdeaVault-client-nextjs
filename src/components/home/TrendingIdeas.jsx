@@ -1,7 +1,6 @@
-import { trendingIdeas } from "@/lib/data";
-import Image from "next/image";
 import Link from "next/link";
 import IdeaCard from "../shared/IdeaCard";
+import { ideas } from "@/lib/frontend-data";
 
 const TrendingIdeas = () => {
     return (
@@ -25,7 +24,7 @@ const TrendingIdeas = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
-                    trendingIdeas.map((idea, index) => (
+                    ideas.map((idea, index) => (
                         <IdeaCard key={idea.id} idea={idea} index={index} />
                     ))
                 }

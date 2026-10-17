@@ -1,8 +1,8 @@
-import { slides } from "@/lib/data";
+import { slides } from "@/lib/frontend-data";
 import Link from "next/link";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
-const SlideLeftPart = ({slide, goToSlide, currentSlide}) => {
+const SlideLeftPart = ({ slide, goToSlide, currentSlide }) => {
     return (
         <div className="slide-enter max-w-140">
             <div className="rounded-[20px] py-1.5 px-3.5 mb-3 text-xs font-semibold tracking-[0.08em] uppercase inline-block" style={{ background: `${slide.accent}22`, border: `1px solid ${slide.accent}44`, color: slide.accent }}>
