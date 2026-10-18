@@ -1,5 +1,6 @@
 import BrandHeader from "@/components/add-idea/BrandHeader";
 import IdeaPostForm from "@/components/add-idea/IdeaPostForm";
+import { addIdea } from "@/lib/actions";
 import { positions, width } from "@/lib/frontend-data";
 
 const AddIdeaPage = () => {
@@ -21,7 +22,7 @@ const AddIdeaPage = () => {
             <div className='relative z-1 max-w-180 mx-auto px-5'>
                 <BrandHeader />
 
-                <IdeaPostForm />
+                <IdeaPostForm addIdea={addIdea} />
             </div>
         </div>
     );

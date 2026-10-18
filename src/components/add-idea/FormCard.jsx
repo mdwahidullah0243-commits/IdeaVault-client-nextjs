@@ -1,15 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BasicsPanel from "./BasicsPanel";
 import { formInfo, steps } from "@/lib/frontend-data";
 import DetailsPanel from "./DetailsPanel";
 import SolutionPanel from "./SolutionPanel";
 import ReviewPanel from "./ReviewPanel";
 import BackBtn from "./BackBtn";
+import { format } from "date-fns";
+import { toast } from "react-toastify";
+import { redirect } from "next/navigation";
 
-const FormCard = ({ step, setStep }) => {
+const FormCard = ({ step, setStep, addIdeaAction }) => {
     const [errors, setErrors] = useState({});
     const [form, setForm] = useState(formInfo);
     const [isPublishIdea, setIsPublishIdea] = useState('');
+    const [date, setDate] = useState(null);
+
+    useEffect(() => {
+        setDate(new Date());
+    }, []);
 
     const set = (key, value) => {
         setForm(field => ({ ...field, [key]: value }));
@@ -49,32 +57,31 @@ const FormCard = ({ step, setStep }) => {
         }
     };
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+    const handleSubmit = async (formData) => {
+        const ideaData = {
+            ...form,
+            votes: 0,
+            comments: 0,
+            author: '<anonymous>',
+            avatarText: 'AN',
+            avatar: 'https://i.pravatar.cc/80',
+            date: date ? format(new Date(), 'yyyy-M-d') : ''
+        };
 
-        console.log('idea data:', form);
+        if (isPublishIdea === 'publish') {
+            const res = await addIdeaAction(formData, ideaData);
 
-        // if (isPublishIdea === 'publish') {
-        //     const res = await fetch(`http://localhost:5000/idea`, {
-        //         method: 'POST',
-        //         headers: {
-        //             'content-type': 'application/json'
-        //         },
-        //         body: JSON.stringify(form)
-        //     });
-        //     const data = await res.json();
+            if (res.insertedId) {
+                toast.success(`${form.title} Idea successfully added`);
 
-        //     if (data.insertedId) {
-        //         alert(`${form.title} Idea successfully added`);
-
-        //         redirect('/ideas');
-        //     }
-        // }
-    }
+                redirect('/ideas');
+            }
+        }
+    };
 
     return (
         <div className="bg-[#ffffff0a] border-[0.5px] border-[#ffffff1a] rounded-2xl overflow-hidden mt-8">
-            <form onClick={handleSubmit}>
+            <form action={handleSubmit}>
                 {/* Card Inner */}
                 <div className="pt-7 px-7 pb-2">
 

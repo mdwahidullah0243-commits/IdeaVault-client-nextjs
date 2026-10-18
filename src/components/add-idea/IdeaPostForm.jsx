@@ -4,7 +4,7 @@ import { useState } from "react";
 import Stepper from "./Stepper";
 import FormCard from "./FormCard";
 
-const IdeaPostForm = () => {
+const IdeaPostForm = ({ addIdea }) => {
     const [step, setStep] = useState(0);
 
     return (
@@ -13,7 +13,11 @@ const IdeaPostForm = () => {
             <Stepper step={step} />
 
             {/* Form Card */}
-            <FormCard step={step} setStep={setStep} />
+            <FormCard
+                step={step}
+                setStep={setStep}
+                addIdeaAction={addIdea}
+            />
         </div>
     );
 };

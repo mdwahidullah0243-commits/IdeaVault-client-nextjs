@@ -378,7 +378,7 @@ export const formInfo = {
     solution: ""
 };
 
-export const categories = ["Tech", "Health", "AI", "Education", "Finance", "Environment", "Social", "E-Commerce", "SaaS", "Other"];
+export const categories = ['HealthTech', 'Logistics', 'EdTech', 'CleanTech', 'FoodTech', 'Productivity', 'EventTech', 'FinTech', 'AgriTech', 'CareerTech', 'MobilityTech', "Tech", "Health", "AI", "Education", "Finance", "Environment", "Social", "E-Commerce", "SaaS", "Other"];
 
 export const tagSuggestions = ["mobile", "web", "B2B", "B2C", "marketplace", "automation", "open-source"];
 

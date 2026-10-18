@@ -4,8 +4,9 @@ import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
 import ThemeProviders from "@/providers/ThemeProvider";
 import { cn } from "@/lib/utils";
+import { ToastContainer } from "react-toastify";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
 export const sora = Sora({
   subsets: ['latin']
@@ -38,6 +39,11 @@ export default function RootLayout({ children }) {
           <main>
             {children}
           </main>
+
+          <ToastContainer
+            position="top-center"
+            autoClose={4000}
+          />
 
           <Footer />
         </ThemeProviders>

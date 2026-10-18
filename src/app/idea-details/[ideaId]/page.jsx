@@ -12,7 +12,6 @@ export const instant = false;
 const IdeaDetailsPage = async ({ params }) => {
     const { ideaId } = await params;
     const idea = await getIdeaById(ideaId);
-    console.log('idea:', idea);
 
     const { date, comments, imageUrl, title, category, detailedDesc, tags, audience, budget, problem, solution } = idea;
 
