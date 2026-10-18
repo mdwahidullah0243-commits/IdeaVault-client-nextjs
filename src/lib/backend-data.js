@@ -9,3 +9,9 @@ export const getIdeas = async () => {
     
     return res.json();
 };
+
+export const getIdeaById = async (ideaId) => {
+    const res = await fetch(`${process.env.SERVER_URL}/idea-details/${ideaId}`);
+
+    return res.json();
+}

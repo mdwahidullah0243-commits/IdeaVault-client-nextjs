@@ -3,7 +3,7 @@
 import { format } from "date-fns";
 import { useEffect, useState } from "react";
 
-const HeadingTextPart = () => {
+const HeadingTextPart = ({ title, details, customDate }) => {
     const [date, setDate] = useState(null);
 
     useEffect(() => {
@@ -13,17 +13,17 @@ const HeadingTextPart = () => {
     return (
         <div className="mb-4 space-y-2">
             <h3 className="text-base font-bold text-[#e8eaf0]">
-                AI-Powered Mental Health Coach
+                {title}
             </h3>
 
             <p className="text-sm font-medium text-[#e8eaf0b2]">
                 {
-                    date ? format(new Date(), 'MMM d, yyyy') : ''
+                    date ? format(new Date(customDate), 'MMM d, yyyy') : ''
                 }
             </p>
 
             <p className="mt-4 text-sm font-medium text-[#e8eaf0b2]">
-                An AI-powered mental health coach is a digital tool that uses conversational artificial intelligence to offer 24/7 support for stress, anxiety, low mood, and daily emotional wellness.
+                {details}
             </p>
         </div>
     );
