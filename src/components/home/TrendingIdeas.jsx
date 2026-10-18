@@ -32,7 +32,7 @@ const TrendingIdeas = async () => {
                     {
                         ideas.map((idea, index) => (
                             <IdeaCard
-                                key={idea.id}
+                                key={idea._id}
                                 idea={idea}
                                 index={index}
                                 color={colors[index % colors.length]}

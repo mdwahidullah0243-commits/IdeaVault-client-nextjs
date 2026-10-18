@@ -11,7 +11,7 @@ const PasswordResetPage = () => {
                 <Form className="space-y-8">
                     <TextField isRequired name="email" type="email" className='space-y-1'>
                         <Label className="text-white">What's your email address?</Label>
-                        <Input className='bg-[#2a3546] text-slate-300 py-3 border border-slate-600' placeholder="you@example.com" variant="secondary" />
+                        <Input className='bg-[#2a3546] text-slate-300 py-3 border border-slate-600 placeholder:text-white/30' placeholder="you@example.com" variant="secondary" />
                     </TextField>
 
                     <Button

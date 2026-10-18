@@ -51,7 +51,9 @@ const IdeaCard = ({ idea, index, color }) => {
                         }
                     </div>
                     <span className="text-[12px] text-[#6b7280]">
-                        {author}
+                        {
+                            `${author.split(' ').slice(0, 1).join('')} ${author.split(' ').slice(1, 2).map(word => word[0])}.`
+                        }
                     </span>
                 </div>
 

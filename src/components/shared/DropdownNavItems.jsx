@@ -14,10 +14,19 @@ import { navItemsMenu } from "@/lib/frontend-data";
 import Link from "next/link";
 import { RiMenu3Fill } from "react-icons/ri";
 import ThemeSwitcher from "./ThemeSwitcher";
+import { authClient } from "@/lib/auth-client";
+import MyLoading from "./MyLoading";
 
-const DropdownNavItems = ({ isLoggedIn }) => {
+const DropdownNavItems = () => {
+    const { data, isPending } = authClient.useSession();
+    const user = data?.user;
+
+    if (isPending) {
+        return <MyLoading />
+    }
+
     return (
-        <div className={`${isLoggedIn && 'hidden'} xl:hidden`}>
+        <div className={`${user && 'hidden'} xl:hidden`}>
             <DropdownMenu>
                 <DropdownMenuTrigger render={<Button variant="outline" className='cursor-pointer'><RiMenu3Fill /></Button>} />
 

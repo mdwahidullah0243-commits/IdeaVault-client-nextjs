@@ -8,12 +8,17 @@ import BackBtn from "./BackBtn";
 import { format } from "date-fns";
 import { toast } from "react-toastify";
 import { redirect } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
+import MyLoading from "../shared/MyLoading";
 
 const FormCard = ({ step, setStep, addIdeaAction }) => {
     const [errors, setErrors] = useState({});
     const [form, setForm] = useState(formInfo);
     const [isPublishIdea, setIsPublishIdea] = useState('');
     const [date, setDate] = useState(null);
+
+    const { data, isPending } = authClient.useSession();
+    const user = data?.user;
 
     useEffect(() => {
         setDate(new Date());
@@ -59,12 +64,13 @@ const FormCard = ({ step, setStep, addIdeaAction }) => {
 
     const handleSubmit = async (formData) => {
         const ideaData = {
+            userId: user?.id,
             ...form,
             votes: 0,
             comments: 0,
-            author: '<anonymous>',
-            avatarText: 'AN',
-            avatar: 'https://i.pravatar.cc/80',
+            author: user?.name,
+            avatarText: user?.name.split(' ').slice(0, 2).map(word => word[0]).join(''),
+            avatar: user?.image,
             date: date ? format(new Date(), 'yyyy-M-d') : ''
         };
 
@@ -77,6 +83,11 @@ const FormCard = ({ step, setStep, addIdeaAction }) => {
                 redirect('/ideas');
             }
         }
+    };
+
+
+    if (isPending) {
+        return <MyLoading />
     };
 
     return (

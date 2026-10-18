@@ -2,25 +2,38 @@
 
 import Link from "next/link";
 import ProfileManagement from "./ProfileManagement";
-import { useState } from "react";
 import DropdownNavItems from "./DropdownNavItems";
+import { authClient } from "@/lib/auth-client";
+import { DNA } from "react-loader-spinner";
 
 const NavRightPart = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const { data, isPending } = authClient.useSession();
+    const user = data?.user;
+
+    if (isPending) {
+        return <DNA
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="dna-loading"
+            wrapperStyle={{}}
+            wrapperClass="dna-wrapper"
+        />
+    }
 
     return (
         <>
             {
-                isLoggedIn
+                user
                     ?
-                    < ProfileManagement setIsLoggedIn={setIsLoggedIn} />
+                    < ProfileManagement />
                     :
                     <>
-                        <DropdownNavItems isLoggedIn={isLoggedIn} />
+                        <DropdownNavItems />
 
                         <div className="max-xl:hidden flex gap-2">
                             <Link href={'/login'}>
-                                <button onClick={() => setIsLoggedIn(true)} className="hover:border-[#6C63FF] hover:text-[#6C63FF] bg-transparent text-[#9ca3b8] border border-[#ffffff1f] rounded-[10px] py-2.5 px-5.5 text-base font-medium cursor-pointer transition-all duration-200">
+                                <button className="hover:border-[#6C63FF] hover:text-[#6C63FF] bg-transparent text-[#9ca3b8] border border-[#ffffff1f] rounded-[10px] py-2.5 px-5.5 text-base font-medium cursor-pointer transition-all duration-200">
                                     Log in
                                 </button>
                             </Link>

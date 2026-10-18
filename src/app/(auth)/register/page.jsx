@@ -1,41 +1,50 @@
 'use client';
 
 import SignInWithGoogle from "@/components/auth/SignInWithGoogle";
+import { authClient } from "@/lib/auth-client";
 import {
     Button,
+    Description,
     FieldError,
     Fieldset,
     Form,
     Input,
+    InputGroup,
     Label,
     Surface,
     TextField,
 } from "@heroui/react";
+import { Eye } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
+import { FaEyeSlash } from "react-icons/fa6";
+import { toast } from "react-toastify";
 
 const RegisterPage = () => {
-    // const handleSubmitOnRegister = async (event) => {
-    //     event.preventDefault();
+    const [isVisible, setIsVisible] = useState(false);
 
-    //     const formData = new FormData(event.currentTarget);
-    //     const userData = Object.fromEntries(formData.entries());
+    const handleSubmitOnRegister = async (event) => {
+        event.preventDefault();
 
-    //     const { data, error } = await authClient.signUp.email({
-    //         name: userData.name,
-    //         email: userData.email,
-    //         image: userData.imageUrl,
-    //         password: userData.password,
-    //         callbackURL: '/destinations'
-    //     });
+        const formData = new FormData(event.currentTarget);
+        const userData = Object.fromEntries(formData.entries());
 
-    //     if(data) {
-    //         alert(`Your account is successfully created!`);
-    //     };
+        const { data, error } = await authClient.signUp.email({
+            name: userData.name,
+            email: userData.email,
+            image: userData.imageUrl,
+            password: userData.password,
+            callbackURL: '/ideas'
+        });
 
-    //     if(error) {
-    //         alert(`Your account is faild - ${error.message}`);
-    //     };
-    // };
+        if (data) {
+            toast.success(`Your account is successfully created!`);
+        };
+
+        if (error) {
+            toast.error(`Your account is faild - ${error.message}`);
+        };
+    };
 
     return (
         <div className="max-w-120 sm:max-w-150 mx-auto my-15 space-y-7">
@@ -50,29 +59,66 @@ const RegisterPage = () => {
 
             <div className="rounded-xl flex items-center justify-center bg-[#1e2939] p-8">
                 <Surface className="w-full bg-[#1e2939]">
-                    <Form>
+                    <Form onSubmit={handleSubmitOnRegister}>
                         <Fieldset className="w-full">
                             <Fieldset.Group>
                                 <TextField isRequired name="name">
                                     <Label className="text-white">Full Name</Label>
-                                    <Input className='bg-[#2a3546] text-slate-300 placeholder:text-white/30 border-2 focus:border-[#10ac84]/70' placeholder="Enter your name" variant="secondary" />
+                                    <Input className='bg-[#2a3546] text-slate-300 placeholder:text-white/30 border-2 rounded-full focus:border-[#10ac84]/70' placeholder="Enter your name" variant="secondary" />
                                     <FieldError />
                                 </TextField>
 
                                 <TextField isRequired name="email" type="email">
                                     <Label className="text-white">Email</Label>
-                                    <Input className='bg-[#2a3546] text-slate-300 placeholder:text-white/30 border-2 focus:border-[#10ac84]/70' placeholder="Enter your email" variant="secondary" />
+                                    <Input className='bg-[#2a3546] text-slate-300 placeholder:text-white/30 border-2 rounded-full focus:border-[#10ac84]/70' placeholder="Enter your email" variant="secondary" />
                                     <FieldError />
                                 </TextField>
 
                                 <TextField name="imageUrl" type="url">
                                     <Label className="text-white">ImageUrl</Label>
-                                    <Input className='bg-[#2a3546] text-slate-300 placeholder:text-white/30 border-2 focus:border-[#10ac84]/70' placeholder="Give your image address for profile" variant="secondary" />
+                                    <Input className='bg-[#2a3546] text-slate-300 placeholder:text-white/30 border-2 rounded-full focus:border-[#10ac84]/70' placeholder="Give your image address for profile" variant="secondary" />
                                 </TextField>
 
-                                <TextField isRequired name="password" type="password">
+                                <TextField
+                                    isRequired
+                                    minLength={6}
+                                    name="password"
+                                    type={isVisible ? "text" : "password"}
+                                    validate={(value) => {
+                                        if (value.length < 6) {
+                                            return "Password must be at least 6 characters";
+                                        }
+                                        if (!/[A-Z]/.test(value)) {
+                                            return "Password must contain at least one uppercase letter";
+                                        }
+                                        if (!/[a-z]/.test(value)) {
+                                            return "Password must contain at least one lowercase letter";
+                                        }
+                                        return null;
+                                    }}
+                                >
                                     <Label className="text-white">Password</Label>
-                                    <Input className='bg-[#2a3546] text-slate-300 placeholder:text-white/30 border-2 focus:border-[#10ac84]/70' placeholder="Enter your password" variant="secondary" />
+                                    <InputGroup className='bg-[#2a3546] text-slate-300 border-2 rounded-full focus:border-[#10ac84]/70!'>
+                                        <InputGroup.Input
+                                            className='w-full placeholder:text-white/30'
+                                            type={isVisible ? "text" : "password"}
+                                            placeholder="Enter your password"
+                                        />
+                                        <InputGroup.Suffix className="pe-0">
+                                            <Button
+                                                isIconOnly
+                                                aria-label={isVisible ? "Hide password" : "Show password"}
+                                                size="sm"
+                                                className=''
+                                                onPress={() => setIsVisible(!isVisible)}
+                                            >
+                                                {isVisible ? <Eye className="size-4" /> : <FaEyeSlash className="size-4" />}
+                                            </Button>
+                                        </InputGroup.Suffix>
+                                    </InputGroup>
+                                    <Description>
+                                        Must be at least 6 characters with 1 uppercase and 1 lowercase letter
+                                    </Description>
                                     <FieldError />
                                 </TextField>
                             </Fieldset.Group>

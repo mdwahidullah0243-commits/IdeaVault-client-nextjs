@@ -3,7 +3,7 @@ import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import ProfileDropdown from "./ProfileDropdown";
 
-const ProfileManagement = ({ setIsLoggedIn }) => {
+const ProfileManagement = () => {
     const [profileOpen, setProfileOpen] = useState(false);
 
     return (
@@ -36,7 +36,7 @@ const ProfileManagement = ({ setIsLoggedIn }) => {
 
             {
                 profileOpen && (
-                    <ProfileDropdown setIsLoggedIn={setIsLoggedIn} />
+                    <ProfileDropdown />
                 )
             }
         </div>
