@@ -4,20 +4,29 @@ import { useEffect, useState } from "react";
 import CategoryBox from "./CategoryBox";
 import SortingBox from "./SortingBox";
 import CirclesWithBarLoading from "../shared/CirclesWithBarLoading";
-import { getIdeasByCategory, getIdeasBySortingItem } from "@/lib/backend-data";
+import { getIdeasByCategory, getIdeasBySortingItem, searchIdeas } from "@/lib/backend-data";
 import SearchField from "./SearchField";
 import IdeasByCategory from "./IdeasByCategory";
 import NoIdeasFound from "./NoIdeasFound";
+import ErrorMessage from "./ErrorMessage";
 
 const IdeasContainer = () => {
     const [category, setCategory] = useState('All');
     const [sortingItem, setSortingItem] = useState('Newest');
+    const [search, setSearch] = useState('');
+    const [debouncedSearch, setDebouncedSearch] = useState("");
     const [ideas, setIdeas] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [isCategory, setIsCategory] = useState(true);
+    const [filteredBox, setFilteredBox] = useState('category');
 
-    console.log({ isCategory, ideas });
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setDebouncedSearch(search);
+        }, 400);
+
+        return () => clearTimeout(timer);
+    }, [search]);
 
     useEffect(() => {
         const controller = new AbortController();
@@ -27,24 +36,33 @@ const IdeasContainer = () => {
             setError(null);
 
             try {
-                if (isCategory) {
+                if (filteredBox === 'category') {
                     const data = await getIdeasByCategory(category, controller.signal)
 
                     if (!controller.signal.aborted) {
                         setIdeas(data);
                     }
 
-                } else {
+                } else if (filteredBox === 'sorting') {
                     const data = await getIdeasBySortingItem(sortingItem, controller.signal)
 
                     if (!controller.signal.aborted) {
                         setIdeas(data);
                     }
+
+                } else if (filteredBox === 'searching') {
+                    const data = await searchIdeas(search, controller.signal)
+
+                    if (!controller.signal.aborted) {
+                        setIdeas(data);
+                    }
                 }
+
             } catch (error) {
                 if (!controller.signal.aborted) {
                     setError(error.message);
                 }
+
             } finally {
                 if (!controller.signal.aborted) {
                     setLoading(false);
@@ -55,19 +73,24 @@ const IdeasContainer = () => {
         fetchIdeas();
 
         return () => controller.abort();
-    }, [category, sortingItem, isCategory]);
+
+    }, [category, sortingItem, filteredBox, debouncedSearch]);
 
     return (
         <>
             {/* Filters */}
             <div className="flex flex-col-reverse gap-5 xl:gap-0 xl:flex-row items-center justify-between">
                 <div className="flex items-center gap-4">
-                    <CategoryBox setCategory={setCategory} setIsCategory={setIsCategory} />
+                    <CategoryBox setCategory={setCategory} setFilteredBox={setFilteredBox} />
 
-                    <SortingBox setSortingItem={setSortingItem} setIsCategory={setIsCategory} />
+                    <SortingBox setSortingItem={setSortingItem} setFilteredBox={setFilteredBox} />
                 </div>
 
-                <SearchField />
+                <SearchField
+                    search={search}
+                    setSearch={setSearch}
+                    setFilteredBox={setFilteredBox}
+                />
             </div>
 
             {/* Ideas */}
@@ -75,11 +98,11 @@ const IdeasContainer = () => {
                 loading ? (
                     <CirclesWithBarLoading />
                 ) : error ? (
-                    <p className="text-red-500">{error}</p>
+                    <ErrorMessage error={error} setCategory={setCategory} />
                 ) : (
                     ideas.length === 0
                         ?
-                        <NoIdeasFound onReset={() => setCategory('all')} />
+                        <NoIdeasFound onReset={() => setCategory('All')} />
                         :
                         <IdeasByCategory ideas={ideas} />
                 )

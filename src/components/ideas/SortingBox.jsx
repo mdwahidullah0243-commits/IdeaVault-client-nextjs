@@ -1,9 +1,9 @@
 import { sortingItems } from "@/lib/frontend-data";
 import { ListBox, Select } from "@heroui/react";
 
-const SortingBox = ({ setSortingItem, setIsCategory }) => {
+const SortingBox = ({ setSortingItem, setFilteredBox}) => {
     const handleSelectSortingItem = (item) => {
-        setIsCategory(false);
+        setFilteredBox('sorting');
         setSortingItem(item);
     }; 
 

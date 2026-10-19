@@ -1,9 +1,9 @@
 import { categories } from "@/lib/frontend-data";
 import { ListBox, Select } from "@heroui/react";
 
-const CategoryBox = ({ setCategory, setIsCategory }) => {
+const CategoryBox = ({ setCategory, setFilteredBox }) => {
     const handleSelectCategory = (category) => {
-        setIsCategory(true);
+        setFilteredBox('category');
         setCategory(category);
     };
 
