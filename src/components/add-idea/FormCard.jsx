@@ -9,7 +9,7 @@ import { format } from "date-fns";
 import { toast } from "react-toastify";
 import { redirect } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
-import MyLoading from "../shared/MyLoading";
+import CirclesWithBarLoading from "../shared/CirclesWithBarLoading";
 
 const FormCard = ({ step, setStep, addIdeaAction }) => {
     const [errors, setErrors] = useState({});
@@ -87,7 +87,7 @@ const FormCard = ({ step, setStep, addIdeaAction }) => {
 
 
     if (isPending) {
-        return <MyLoading />
+        return <CirclesWithBarLoading />
     };
 
     return (

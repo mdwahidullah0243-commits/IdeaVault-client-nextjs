@@ -3,7 +3,7 @@ import IdeaCard from "../shared/IdeaCard";
 import { colors } from "@/lib/frontend-data";
 import { getSortedIdeas } from "@/lib/backend-data";
 import { Suspense } from "react";
-import MyLoading from "../shared/MyLoading";
+import CirclesWithBarLoading from "../shared/CirclesWithBarLoading";
 
 const TrendingIdeas = async () => {
     const ideas = await getSortedIdeas();
@@ -27,7 +27,7 @@ const TrendingIdeas = async () => {
                 </Link>
             </div>
 
-            <Suspense fallback={<MyLoading />}>
+            <Suspense fallback={<CirclesWithBarLoading />}>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {
                         ideas.map((idea, index) => (

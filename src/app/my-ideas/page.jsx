@@ -1,8 +1,12 @@
 import MyIdeaCard from "@/components/my-ideas/MyIdeaCard";
+import NoIdeasCard from "@/components/my-ideas/NoIdeasCard";
+import TrianglesLoading from "@/components/shared/TrianglesLoading";
+import { deleteIdea, updateIdea } from "@/lib/actions";
 import { auth } from "@/lib/auth";
 import { getMyIdeas } from "@/lib/backend-data";
 import { colors } from "@/lib/frontend-data";
 import { headers } from "next/headers";
+import { Suspense } from "react";
 
 const MyIdeasPage = async () => {
     const session = await auth.api.getSession({
@@ -11,7 +15,7 @@ const MyIdeasPage = async () => {
 
     const user = session?.user;
 
-    const myIdeas = await getMyIdeas(user.id);
+    const myIdeas = await getMyIdeas(user?.id);
 
     return (
         <section className="w-4/5 xl:w-3/5 mx-auto my-12">
@@ -20,17 +24,27 @@ const MyIdeasPage = async () => {
                 My Ideas
             </h1>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-1 gap-5 mt-8">
-                {
-                    myIdeas.map((idea, index) => (
-                        <MyIdeaCard
-                            key={idea._id}
-                            idea={idea}
-                            color={colors[index % colors.length]}
-                        />
-                    ))
-                }
-            </div>
+            {
+                myIdeas.length === 0
+                    ?
+                    <NoIdeasCard />
+                    :
+                    <Suspense fallback={<TrianglesLoading />}>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-1 gap-5 mt-8">
+                            {
+                                myIdeas.map((idea, index) => (
+                                    <MyIdeaCard
+                                        key={idea._id}
+                                        idea={idea}
+                                        updateIdeaAction={updateIdea}
+                                        deleteIdeaAction={deleteIdea}
+                                        color={colors[index % colors.length]}
+                                    />
+                                ))
+                            }
+                        </div>
+                    </Suspense>
+            }
         </section>
     );
 };

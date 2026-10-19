@@ -1,6 +1,6 @@
 import { CirclesWithBar } from 'react-loader-spinner';
 
-const MyLoading = () => {
+const CirclesWithBarLoading = () => {
     return (
         <div className="flex justify-center mt-12">
             <CirclesWithBar
@@ -19,4 +19,4 @@ const MyLoading = () => {
     );
 };
 
-export default MyLoading;
+export default CirclesWithBarLoading;

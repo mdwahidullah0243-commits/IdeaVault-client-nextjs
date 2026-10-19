@@ -1,9 +1,41 @@
+'use client';
+
 import { FaEdit } from "react-icons/fa";
 import { Button, FieldError, Input, Label, ListBox, Modal, Surface, TextArea, TextField, Select } from "@heroui/react";
 import { MdBrowserUpdated } from "react-icons/md";
 import { budgetRanges, categories } from "@/lib/frontend-data";
+import { toast } from "react-toastify";
+import { useEffect, useState } from "react";
+import { format } from "date-fns";
+import { redirect } from "next/navigation";
 
-const UpdateYourIdea = () => {
+const UpdateYourIdea = ({ idea, updateIdeaAction }) => {
+    const [date, setDate] = useState(null);
+
+    useEffect(() => {
+        setDate(new Date());
+    }, []);
+
+    const { _id, title, shortDesc, detailedDesc, category, budget, problem, solution, imageUrl, audience } = idea;
+
+    const handleUpdateIdeaAction = async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(event.currentTarget);
+
+        const modifiedIdeaInfo = {
+            ...Object.fromEntries(formData.entries()),
+            date: date ? format(new Date(), 'yyyy-M-d') : ''
+        };
+
+        const res = await updateIdeaAction(modifiedIdeaInfo, _id);
+
+        if (res.modifiedCount > 0) {
+            toast.success(`${title} - your idea is successfully modified!`);
+            
+            redirect('/my-ideas');
+        };
+    };
 
     return (
         <div>
@@ -14,46 +46,47 @@ const UpdateYourIdea = () => {
 
                 <Modal.Backdrop>
                     <Modal.Container placement="auto">
-                        <Modal.Dialog className="sm:max-w-2xl bg-[#18181b]">
-                            <Modal.CloseTrigger />
-                            <Modal.Header>
-                                <Modal.Icon className="bg-accent-soft text-accent-soft-foreground">
-                                    <MdBrowserUpdated />
+                        <Modal.Dialog className="sm:max-w-2xl bg-[#101828]">
+                            <Modal.CloseTrigger className="bg-white/30 hover:bg-white/20 text-slate-300" />
+                            <Modal.Header className="gap-2">
+                                <Modal.Icon className="bg-[#27272a] text-white">
+                                    <MdBrowserUpdated className="" />
                                 </Modal.Icon>
                                 <Modal.Heading>Update Travel Package</Modal.Heading>
-                                <p className="text-sm leading-5 text-muted">
+                                <p className="text-sm leading-5 text-slate-300">
                                     Make changes to the travel package details below
                                 </p>
                             </Modal.Header>
 
-                            <Modal.Body className="p-6">
-                                <Surface variant="default" className="bg-[#272729] rounded-xl">
-                                    <form className="p-10 space-y-8">
+                            <Modal.Body className="p-3 sm:p-6">
+                                <Surface variant="default" className="bg-[#1e2939] rounded-xl">
+                                    <form onSubmit={handleUpdateIdeaAction} className="p-5 sm:p-10 space-y-8">
                                         {/* Idea title */}
-                                        <TextField name="title" isRequired>
+                                        <TextField name="title" defaultValue={title} isRequired>
                                             <Label className="text-white">Idea Title</Label>
-                                            <Input placeholder="Bali Paradise" className="rounded-2xl bg-[#201f1fbb]" />
+                                            <Input placeholder="Type your idea title" className="bg-[#2a3546] text-slate-300 placeholder:text-white/30 border-2 rounded-xl focus:border-[#10ac84]/70" />
                                             <FieldError />
                                         </TextField>
 
                                         {/* Short Description */}
-                                        <TextField name="shortDesc" isRequired>
+                                        <TextField name="shortDesc" defaultValue={shortDesc} isRequired>
                                             <Label className="text-white">Short Description</Label>
-                                            <Input placeholder="Indonesia" className="rounded-2xl bg-[#201f1fbb]" />
+                                            <Input placeholder="Short description for your idea" className="bg-[#2a3546] text-slate-300 placeholder:text-white/30 border-2 rounded-xl focus:border-[#10ac84]/70" />
                                             <FieldError />
                                         </TextField>
 
                                         {/* Category - Updated Select Component */}
                                         <Select
                                             name="category"
+                                            defaultValue={category}
                                             isRequired
                                             className="w-full"
                                             placeholder="Select category"
                                         >
                                             <Label className="text-white">Category</Label>
-                                            <Select.Trigger className="rounded-2xl bg-[#201f1fbb]">
-                                                <Select.Value />
-                                                <Select.Indicator />
+                                            <Select.Trigger className="bg-[#2a3546] text-slate-300 border-2 rounded-xl focus:border-[#10ac84]/70">
+                                                <Select.Value className='data-placeholder:text-white/30' />
+                                                <Select.Indicator className="text-white/30" />
                                             </Select.Trigger>
                                             <Select.Popover className='bg-[#1a1d2e]'>
                                                 <ListBox>
@@ -72,14 +105,15 @@ const UpdateYourIdea = () => {
                                         {/* Budget Ranges - Updated Select Component */}
                                         <Select
                                             name="budget"
+                                            defaultValue={budget}
                                             isRequired
                                             className="w-full"
                                             placeholder="Select range"
                                         >
                                             <Label className="text-white">Estimated Budget</Label>
-                                            <Select.Trigger className="rounded-2xl bg-[#201f1fbb]">
-                                                <Select.Value />
-                                                <Select.Indicator />
+                                            <Select.Trigger className="bg-[#2a3546] text-slate-300 border-2 rounded-xl focus:border-[#10ac84]/70">
+                                                <Select.Value className='data-placeholder:text-white/30' />
+                                                <Select.Indicator className="text-white/30" />
                                             </Select.Trigger>
                                             <Select.Popover className='bg-[#1a1d2e]'>
                                                 <ListBox>
@@ -96,67 +130,68 @@ const UpdateYourIdea = () => {
                                         </Select>
 
                                         {/* Target Audience */}
-                                        <TextField name="audience" isRequired>
+                                        <TextField name="audience" defaultValue={audience} isRequired>
                                             <Label className="text-white">Target Audience</Label>
                                             <Input
                                                 placeholder="e.g. Freelancers in South Asia"
-                                                className="rounded-2xl bg-[#201f1fbb]"
+                                                className="bg-[#2a3546] text-slate-300 placeholder:text-white/30 border-2 rounded-xl focus:border-[#10ac84]/70"
                                             />
                                             <FieldError />
                                         </TextField>
 
                                         {/* Image URL - Removed preview */}
                                         <div>
-                                            <TextField name="imageUrl" isRequired>
+                                            <TextField name="imageUrl" defaultValue={imageUrl} isRequired>
                                                 <Label className="text-white">Cover Image URL</Label>
                                                 <Input
                                                     type="url"
                                                     placeholder="https://www.example.com/images/photo-1.png"
-                                                    className="rounded-2xl bg-[#201f1fbb]"
+                                                    className="bg-[#2a3546] text-slate-300 placeholder:text-white/30 border-2 rounded-xl focus:border-[#10ac84]/70"
                                                 />
                                                 <FieldError />
                                             </TextField>
                                         </div>
 
                                         {/* Problem Statement */}
-                                        <TextField name="problem" isRequired>
+                                        <TextField name="problem" defaultValue={problem} isRequired>
                                             <Label className="text-white">Problem Statement</Label>
                                             <TextArea
                                                 placeholder="Describe the real problem your idea addresses ..."
-                                                className="rounded-2xl bg-[#201f1fbb]"
+                                                className="bg-[#2a3546] text-slate-300 placeholder:text-white/30 border-2 rounded-xl focus:border-[#10ac84]/70"
                                             />
                                             <FieldError />
                                         </TextField>
 
                                         {/* Proposed Solution */}
-                                        <TextField name="solution" isRequired>
+                                        <TextField name="solution" defaultValue={solution} isRequired>
                                             <Label className="text-white">Proposed Solution</Label>
                                             <TextArea
                                                 placeholder="Walk us through your solution ..."
-                                                className="rounded-2xl bg-[#201f1fbb]"
+                                                className="bg-[#2a3546] text-slate-300 placeholder:text-white/30 border-2 rounded-xl focus:border-[#10ac84]/70"
                                             />
                                             <FieldError />
                                         </TextField>
 
                                         {/* Detailed Description */}
-                                        <TextField name="detailedDescription" isRequired>
+                                        <TextField name="detailedDesc" defaultValue={detailedDesc} isRequired>
                                             <Label className="text-white">Detailed Description</Label>
                                             <TextArea
                                                 placeholder="Optional deeper dive into your idea ..."
-                                                className="rounded-3xl bg-[#201f1fbb]"
+                                                className="bg-[#2a3546] text-slate-300 placeholder:text-white/30 border-2 rounded-xl focus:border-[#10ac84]/70"
                                             />
                                             <FieldError />
                                         </TextField>
 
                                         {/* Submit Section */}
                                         <div className="flex justify-end gap-3">
-                                            <Button slot="close" variant="secondary">
+                                            <Button slot="close" className='bg-[#68687479] hover:bg-[#68687479]/30 text-white'>
                                                 Cancel
                                             </Button>
 
                                             <Button
                                                 type="submit"
-                                                className='bg-[#079992]'
+                                                slot='close'
+                                                className='bg-[#079992] hover:bg-[#079992]/30'
                                             >
                                                 Save Changes
                                             </Button>

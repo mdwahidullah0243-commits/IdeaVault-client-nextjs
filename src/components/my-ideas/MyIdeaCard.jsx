@@ -1,9 +1,8 @@
-import { MessageCircleMore, ThumbsUp } from "lucide-react";
 import Link from "next/link";
 import UpdateYourIdea from "./UpdateYourIdea";
 import AlertModalForDelete from "./AlertModalForDelete";
 
-const MyIdeaCard = ({ idea, color }) => {
+const MyIdeaCard = ({ idea, updateIdeaAction, deleteIdeaAction, color }) => {
     return (
         <div className="bg-[#ffffff0a] border border-[#ffffff14] rounded-2xl p-5 flex flex-col xl:flex-row justify-between xl:items-center gap-4 hover:bg-[#6c63ff14] hover:border-[#6c63ff4d] hover:-translate-y-1 transition-all duration-200 cursor-pointer">
             <div className="">
@@ -22,9 +21,12 @@ const MyIdeaCard = ({ idea, color }) => {
                     </button>
                 </Link>
 
-                <UpdateYourIdea />
+                <UpdateYourIdea
+                    idea={idea}
+                    updateIdeaAction={updateIdeaAction}
+                />
 
-                <AlertModalForDelete />
+                <AlertModalForDelete ideaId={idea._id} deleteIdeaAction={deleteIdeaAction} />
             </div>
         </div>
     );

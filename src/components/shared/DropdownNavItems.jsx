@@ -15,14 +15,14 @@ import Link from "next/link";
 import { RiMenu3Fill } from "react-icons/ri";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { authClient } from "@/lib/auth-client";
-import MyLoading from "./MyLoading";
+import CirclesWithBarLoading from "./CirclesWithBarLoading";
 
 const DropdownNavItems = () => {
     const { data, isPending } = authClient.useSession();
     const user = data?.user;
 
     if (isPending) {
-        return <MyLoading />
+        return <CirclesWithBarLoading />
     }
 
     return (

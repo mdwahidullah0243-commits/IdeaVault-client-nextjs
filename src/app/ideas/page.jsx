@@ -1,7 +1,7 @@
 import Categories from "@/components/ideas/Categories";
 import SearchField from "@/components/ideas/SearchField";
 import IdeaCard from "@/components/shared/IdeaCard";
-import MyLoading from "@/components/shared/MyLoading";
+import CirclesWithBarLoading from "@/components/shared/CirclesWithBarLoading";
 import { getIdeas } from "@/lib/backend-data";
 import { colors } from "@/lib/frontend-data";
 import { Suspense } from "react";
@@ -35,7 +35,7 @@ const IdeasPage = async () => {
             </div>
 
             {/* Ideas */}
-            <Suspense fallback={<MyLoading />}>
+            <Suspense fallback={<CirclesWithBarLoading />}>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {
                         ideas.map((idea, index) => (
