@@ -378,7 +378,9 @@ export const formInfo = {
     solution: ""
 };
 
-export const categories = ['HealthTech', 'Logistics', 'EdTech', 'CleanTech', 'FoodTech', 'Productivity', 'EventTech', 'FinTech', 'AgriTech', 'CareerTech', 'MobilityTech', "Tech", "Health", "AI", "Education", "Finance", "Environment", "Social", "E-Commerce", "SaaS", "Other"];
+export const categories = ['All', 'HealthTech', 'Logistics', 'EdTech', 'CleanTech', 'FoodTech', 'Productivity', 'EventTech', 'FinTech', 'AgriTech', 'CareerTech', 'MobilityTech', "Tech", "Health", "AI", "Education", "Finance", "Environment", "Social", "E-Commerce", "SaaS", "Other"];
+
+export const sortingItems = ['Newest', 'Most Liked', 'Oldest'];
 
 export const tagSuggestions = ["mobile", "web", "B2B", "B2C", "marketplace", "automation", "open-source"];
 

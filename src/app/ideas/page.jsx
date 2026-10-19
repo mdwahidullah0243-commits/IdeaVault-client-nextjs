@@ -1,15 +1,6 @@
-import Categories from "@/components/ideas/Categories";
-import SearchField from "@/components/ideas/SearchField";
-import IdeaCard from "@/components/shared/IdeaCard";
-import CirclesWithBarLoading from "@/components/shared/CirclesWithBarLoading";
-import { getIdeas } from "@/lib/backend-data";
-import { colors } from "@/lib/frontend-data";
-import { Suspense } from "react";
+import IdeasContainer from "@/components/ideas/IdeasContainer";
 
-// export const instant = false;
-
-const IdeasPage = async () => {
-    const ideas = await getIdeas();
+const IdeasPage = () => {
 
     return (
         <div className="w-9/12 mx-auto my-12 space-y-10">
@@ -23,32 +14,8 @@ const IdeasPage = async () => {
                 </p>
             </div>
 
-            {/* Filters */}
-            <div className="flex flex-col-reverse gap-5 xl:gap-0 xl:flex-row items-center justify-between">
-                <div className="flex items-center gap-4">
-                    <Categories />
-
-                    <Categories />
-                </div>
-
-                <SearchField />
-            </div>
-
-            {/* Ideas */}
-            <Suspense fallback={<CirclesWithBarLoading />}>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {
-                        ideas.map((idea, index) => (
-                            <IdeaCard
-                                key={idea._id}
-                                idea={idea}
-                                index={index}
-                                color={colors[index % colors.length]}
-                            />
-                        ))
-                    }
-                </div>
-            </Suspense>
+            {/* Main Container */}
+            <IdeasContainer />
         </div>
     );
 };
