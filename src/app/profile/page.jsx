@@ -15,7 +15,7 @@ const ProfilePage = async () => {
     const user = session?.user;
 
     return (
-        <main className="w-3/5 mx-auto px-4 py-12 space-y-8">
+        <main className="w-11/12 sm:w-4/5 md:w-3/5 mx-auto px-4 py-12 space-y-8">
             <h2 className="text-2xl font-semibold text-[#eaaaff]">
                 <span className="bg-linear-135 from-[#6C63FF] to-[#a855f7] text-transparent bg-clip-text">Welcome,</span> Junior Developer
             </h2>
