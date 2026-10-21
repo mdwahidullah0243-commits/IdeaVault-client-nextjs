@@ -1,5 +1,6 @@
 import { Button } from "@heroui/react";
 import { Lightbulb } from "lucide-react";
+import Image from "next/image";
 import { BsFacebook } from "react-icons/bs";
 import { FaSquareInstagram, FaTwitter } from "react-icons/fa6";
 import { GrLinkedinOption } from "react-icons/gr";
@@ -11,7 +12,7 @@ const Footer = () => {
             <div className="max-lg:w-10/12 mx-auto">
                 <div className="mb-12">
                     <h1 className="flex flex-col sm:flex-row items-center gap-5 sm:gap-2 text-5xl sm:text-6xl md:text-7xl font-bold text-white">
-                        <Lightbulb size={70} color="#6C63FF" /> 
+                        <Image src={'/bulb-footer.png'} alt="bulb" width={80} height={80} /> 
                         <span>IdeaVault</span>
                     </h1>
                     <p className="mt-4 max-w-xl max-sm:text-center">

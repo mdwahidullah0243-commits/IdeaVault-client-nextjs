@@ -30,6 +30,8 @@ export const config = {
         '/add-idea',
         '/my-ideas',
         '/my-interactions',
-        '/idea-details/:path*'
+        '/idea-details/:path*',
+        '/profile',
+        '/profile/edit'
     ],
 };
