@@ -6,26 +6,12 @@ import { authClient } from "@/lib/auth-client";
 import { getVoteInfoOnComment } from "@/lib/backend-data";
 import { comments } from "@/lib/frontend-data";
 
-const VotesOnComment = ({ ideaId, ideaTitle, comment, updateLikesOnCommentAction }) => {
+const VotesOnComment = ({ ideaId, ideaTitle, shortDesc, comment, updateLikesOnCommentAction }) => {
     const [isLiked, setIsLiked] = useState(false);
 
     const { data } = authClient.useSession();
 
     const user = data?.user;
-
-    useEffect(() => {
-        const fetchVote = async () => {
-            const { message } = await getVoteInfoOnComment(ideaId, comment._id, user?.id);
-
-            if (message) {
-                setIsLiked(message);
-            } else {
-                setIsLiked(message)
-            }
-        };
-
-        fetchVote();
-    }, []);
 
     // Like handler
     const handleLiked = () => {
@@ -35,7 +21,7 @@ const VotesOnComment = ({ ideaId, ideaTitle, comment, updateLikesOnCommentAction
 
         const votesInfo = {
             title: ideaTitle,
-            text: comment.text,
+            shortDesc,
             userId: user?.id,
             isLiked: newIsLiked,
         }

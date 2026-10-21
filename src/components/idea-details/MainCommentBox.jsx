@@ -18,6 +18,7 @@ const MainCommentBox = async ({ idea }) => {
             ...Object.fromEntries(formData.entries()),
             user: user?.name,
             avatar: user?.image,
+            title: idea.title
         };
 
         return createComment(idea._id, user?.id, commentData);
@@ -34,7 +35,7 @@ const MainCommentBox = async ({ idea }) => {
                             alt={user?.name}
                             width={80}
                             height={80}
-                            className="w-full rounded-full"
+                            className="w-full h-full rounded-full"
                         />
                         :
                         user?.name.split(' ').slice(0, 2).map(word => word[0]).join('')

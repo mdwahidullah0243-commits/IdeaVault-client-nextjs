@@ -49,8 +49,14 @@ export const getComments = async (ideaId) => {
     return res.json();
 };
 
-export const getVoteInfoOnComment = async (ideaId, commentId, userId) => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/idea/${ideaId}/comment/${commentId}/liked/${userId}`);
+export const getCommentsByUserId = async (userId) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-interactions/comments/${userId}`);
+
+    return res.json();
+};
+
+export const getLikesByUserId = async (userId) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-interactions/likes/${userId}`);
 
     return res.json();
 };

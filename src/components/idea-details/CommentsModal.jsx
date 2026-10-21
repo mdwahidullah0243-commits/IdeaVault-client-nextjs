@@ -48,6 +48,7 @@ const CommentsModal = async ({ idea }) => {
                                                         comment={c}
                                                         ideaId={idea._id}
                                                         ideaTitle={idea.title}
+                                                        shortDesc={idea.shortDesc}
                                                         createReplyAction={createReply}
                                                         updateLikesOnCommentAction={updateLikesOnComment}
                                                         updateCommentAction={updateComment}

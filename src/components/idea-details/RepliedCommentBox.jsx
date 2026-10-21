@@ -2,7 +2,7 @@ import { authClient } from "@/lib/auth-client";
 import { Button, Form, Surface, TextArea, TextField } from "@heroui/react";
 import Image from "next/image";
 
-const RepliedCommentBox = ({ parentId, parentUser, ideaId, createReplyAction, setIsReplyBox, setIsView }) => {
+const RepliedCommentBox = ({ ideaTitle, parentId, parentUser, ideaId, createReplyAction, setIsReplyBox, setIsView }) => {
     const { data, isPending } = authClient.useSession();
 
     const user = data?.user;
@@ -21,6 +21,7 @@ const RepliedCommentBox = ({ parentId, parentUser, ideaId, createReplyAction, se
             ...Object.fromEntries(formData.entries()),
             user: user?.name,
             avatar: user?.image,
+            title: ideaTitle
         };
 
         form.reset();

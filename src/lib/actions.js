@@ -123,3 +123,17 @@ export const deleteComment = async (detailsId, commentId, userId) => {
 
     revalidatePath(`/idea-details/${detailsId}`)
 };
+
+export const updateProfile = async (userId, modifiedProfile) => {
+    'use server';
+
+    const res = fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/profile/edit/${userId}`, {
+        method: 'PATCH',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(modifiedProfile)
+    });
+
+    revalidatePath('/profile/edit');
+}

@@ -9,7 +9,7 @@ import ActionsMenu from "./ActionsMenu";
 import { formatDistanceToNow } from "date-fns";
 import VotesOnComment from "./VotesOnComment";
 
-const Comment = ({ comment, isReply = false, isLast = true, createReplyAction, ideaId, ideaTitle, updateLikesOnCommentAction, updateCommentAction, deleteCommentAction }) => {
+const Comment = ({ comment, isReply = false, isLast = true, shortDesc, createReplyAction, ideaId, ideaTitle, updateLikesOnCommentAction, updateCommentAction, deleteCommentAction }) => {
     const [isView, setIsView] = useState(false);
     const [isReplyBox, setIsReplyBox] = useState(false);
 
@@ -100,6 +100,7 @@ const Comment = ({ comment, isReply = false, isLast = true, createReplyAction, i
                             <VotesOnComment
                                 ideaId={ideaId}
                                 ideaTitle={ideaTitle}
+                                shortDesc={shortDesc}
                                 comment={comment}
                                 updateLikesOnCommentAction={updateLikesOnCommentAction}
                             />
@@ -133,6 +134,7 @@ const Comment = ({ comment, isReply = false, isLast = true, createReplyAction, i
                                 parentUser={comment.user}
                                 createReplyAction={createReplyAction}
                                 ideaId={ideaId}
+                                ideaTitle={ideaTitle}
                                 setIsReplyBox={setIsReplyBox}
                                 setIsView={setIsView}
                             />

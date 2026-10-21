@@ -1,6 +1,14 @@
+import { auth } from "@/lib/auth";
 import { Avatar } from "@heroui/react";
+import { headers } from "next/headers";
 
-export default function ProfilePage() {
+const ProfilePage = async () => {
+    
+    const session = await auth.api.getSession({
+        headers: await headers()
+    });
+
+    const user = session?.user;
 
     return (
         <main className="w-3/5 mx-auto px-4 py-12 space-y-8">
@@ -15,10 +23,10 @@ export default function ProfilePage() {
 
                 <form className="mt-8 space-y-6">
                     {/* Profile Avatar */}
-                    <div className="flex h-50 w-50 items-center justify-center overflow-hidden rounded-full bg-gray-100">
-                        <Avatar className="size-full">
-                            <Avatar.Image alt="John Doe" src="https://img.heroui.chat/image/avatar?w=400&h=400&u=3" />
-                            <Avatar.Fallback>JD</Avatar.Fallback>
+                    <div className="mx-auto flex h-50 w-50 items-center justify-center overflow-hidden rounded-full bg-gray-100">
+                        <Avatar className="size-full mx-auto">
+                            <Avatar.Image alt={user?.name} src={user?.image} />
+                            <Avatar.Fallback>{user?.name}</Avatar.Fallback>
                         </Avatar>
                     </div>
 
@@ -34,7 +42,7 @@ export default function ProfilePage() {
                         <input
                             id="name"
                             type="text"
-                            value={'Junior Developer'}
+                            value={user?.name}
                             className="w-full rounded-lg border focus:border-2 border-gray-600 px-4 py-3 outline-none focus:border-[#00786f]"
                         />
                     </div>
@@ -51,7 +59,7 @@ export default function ProfilePage() {
                         <input
                             id="email"
                             type="email"
-                            value={'juniordeveloper0243@gmail.com'}
+                            value={user?.email}
                             className="w-full rounded-lg border focus:border-2 border-gray-600 px-4 py-3 outline-none focus:border-[#00786f]"
                         />
                     </div>
@@ -59,4 +67,6 @@ export default function ProfilePage() {
             </div>
         </main>
     );
-}
+};
+
+export default ProfilePage;
