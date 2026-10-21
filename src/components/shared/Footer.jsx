@@ -1,7 +1,7 @@
 import { Button } from "@heroui/react";
-import { Lightbulb, Send } from "lucide-react";
+import { Lightbulb } from "lucide-react";
 import { BsFacebook } from "react-icons/bs";
-import { FaSquareInstagram, FaXTwitter } from "react-icons/fa6";
+import { FaSquareInstagram, FaTwitter } from "react-icons/fa6";
 import { GrLinkedinOption } from "react-icons/gr";
 import { IoLogoYoutube } from "react-icons/io";
 
@@ -75,7 +75,7 @@ const Footer = () => {
 
                         <div className="flex gap-5 mt-4 text-white text-lg">
                             <span className="cursor-pointer">
-                                <FaXTwitter />
+                                <FaTwitter />
                             </span>
                             <span className="cursor-pointer">
                                 <GrLinkedinOption />
