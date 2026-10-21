@@ -4,7 +4,7 @@ import AlertDialogForDelete from "./AlertDialogForDelete";
 import { useState } from "react";
 import EditComment from "./EditComment";
 
-const ActionsMenu = () => {
+const ActionsMenu = ({comment, updateCommentAction, ideaId, deleteCommentAction, userId}) => {
     const [isDeleteOpen, setIsDeleteOpen] = useState(false);
     const [isEditOpen, setIsEditOpen] = useState(false);
 
@@ -31,11 +31,20 @@ const ActionsMenu = () => {
             <EditComment
                 isEditOpen={isEditOpen}
                 setIsEditOpen={setIsEditOpen}
+                commentId={comment._id}
+                text={comment.text}
+                ideaId={ideaId}
+                userId={userId}
+                updateCommentAction={updateCommentAction}
             />
 
             <AlertDialogForDelete
                 isDeleteOpen={isDeleteOpen}
                 setIsDeleteOpen={setIsDeleteOpen}
+                deleteCommentAction={deleteCommentAction}
+                commentId={comment._id}
+                ideaId={ideaId}
+                userId={userId}
             />
         </>
     );

@@ -36,3 +36,21 @@ export const searchIdeas = async (search, signal) => {
 
     return res.json();
 };
+
+export const getVoteInfo = async (ideaId, userId) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/idea-details/${ideaId}/votes/${userId}`);
+
+    return res.json();
+};
+
+export const getComments = async (ideaId) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas/${ideaId}/comments`);
+
+    return res.json();
+};
+
+export const getVoteInfoOnComment = async (ideaId, commentId, userId) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/idea/${ideaId}/comment/${commentId}/liked/${userId}`);
+
+    return res.json();
+};

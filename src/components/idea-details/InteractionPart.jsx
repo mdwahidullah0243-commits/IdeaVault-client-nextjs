@@ -1,7 +1,8 @@
-import { ThumbsUp } from "lucide-react";
+import { updateVotes } from "@/lib/actions";
 import CommentsModal from "./CommentsModal";
+import VotesOnIdea from "./VotesOnIdea";
 
-const InteractionPart = () => {
+const InteractionPart = ({ idea }) => {
     return (
         <div className="space-y-3 mt-6">
             <p className="">
@@ -9,12 +10,9 @@ const InteractionPart = () => {
             </p>
 
             <div className="flex items-center gap-3">
-                <div className="flex items-center gap-2 cursor-pointer text-[#e8eaf0b2] hover:bg-[#e8eaf02d] py-2 px-3 rounded-xl">
-                    <ThumbsUp />
-                    <span>327</span>
-                </div>
+                <VotesOnIdea idea={idea} updateVotesAction={updateVotes} />
 
-                <CommentsModal />
+                <CommentsModal idea={idea} />
             </div>
         </div>
     );

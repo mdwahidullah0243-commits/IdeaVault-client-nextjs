@@ -85,7 +85,7 @@ const IdeaDetailsPage = async ({ params }) => {
             <Separator className="bg-[#e8eaf027] mt-8" />
 
             {/* Interaction System */}
-            <InteractionPart />
+            <InteractionPart idea={idea} />
         </div>
     );
 };
