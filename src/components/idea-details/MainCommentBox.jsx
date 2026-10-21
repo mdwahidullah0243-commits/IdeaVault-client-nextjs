@@ -9,6 +9,10 @@ const MainCommentBox = async ({ idea }) => {
         headers: await headers()
     });
 
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    });
+
     const user = session?.user;
 
     const handleCreateCommentAction = async (formData) => {
@@ -21,7 +25,7 @@ const MainCommentBox = async ({ idea }) => {
             title: idea.title
         };
 
-        return createComment(idea._id, user?.id, commentData);
+        return createComment(idea._id, user?.id, commentData, token);
     };
 
     return (

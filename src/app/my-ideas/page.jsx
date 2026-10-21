@@ -8,14 +8,22 @@ import { colors } from "@/lib/frontend-data";
 import { headers } from "next/headers";
 import { Suspense } from "react";
 
+export const metadata = {
+    title: "My Ideas",
+};
+
 const MyIdeasPage = async () => {
     const session = await auth.api.getSession({
         headers: await headers()
     });
 
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    });
+
     const user = session?.user;
 
-    const myIdeas = await getMyIdeas(user?.id);
+    const myIdeas = await getMyIdeas(user?.id, token);
 
     return (
         <section className="w-4/5 xl:w-3/5 mx-auto my-12">

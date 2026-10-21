@@ -2,6 +2,10 @@ import { auth } from "@/lib/auth";
 import { Avatar } from "@heroui/react";
 import { headers } from "next/headers";
 
+export const metadata = {
+    title: "Profile",
+};
+
 const ProfilePage = async () => {
     
     const session = await auth.api.getSession({

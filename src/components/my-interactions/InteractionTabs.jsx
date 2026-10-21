@@ -11,10 +11,14 @@ const InteractionTabs = async () => {
         headers: await headers()
     });
 
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    });
+
     const user = session?.user;
 
-    const comments = await getCommentsByUserId(user?.id);
-    const likes = await getLikesByUserId(user?.id);
+    const comments = await getCommentsByUserId(user?.id, token);
+    const likes = await getLikesByUserId(user?.id, token);
 
     return (
         <Tabs className="w-full">
@@ -49,7 +53,7 @@ const InteractionTabs = async () => {
 
             <Tabs.Panel className="pt-3 text-sm text-muted" id="liked">
                 {
-                    comments.length === 0
+                    likes.length === 0
                         ?
                         <EmptyInteractions />
                         :

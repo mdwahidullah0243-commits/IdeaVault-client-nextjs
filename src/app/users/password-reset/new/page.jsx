@@ -1,5 +1,9 @@
 import { Button, Form, Input, Label, TextField } from "@heroui/react";
 
+export const metadata = {
+    title: "Reset New Password",
+};
+
 const PasswordResetPage = () => {
     return (
         <div className="w-1/2 mx-auto h-screen mt-15 space-y-10">

@@ -3,6 +3,10 @@ import IdeaPostForm from "@/components/add-idea/IdeaPostForm";
 import { addIdea } from "@/lib/actions";
 import { positions, width } from "@/lib/frontend-data";
 
+export const metadata = {
+    title: "Add Your Thought",
+};
+
 const AddIdeaPage = () => {
     return (
         <div className={`bg-[#1A1A2E] min-h-screen text-white pb-15 relative overflow-hidden`}>

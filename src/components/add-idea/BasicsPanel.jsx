@@ -44,7 +44,7 @@ const BasicsPanel = ({ errors, form, set }) => {
                     value={form.category}
                     onChange={e => set('category', e.target.value)}>
                     {
-                        categories.map((c) => {
+                        categories.slice(1).map((c) => {
                             return (
                                 <option key={c} value={c} className="bg-[#1a1d2e] cursor-pointer">
                                     {c}

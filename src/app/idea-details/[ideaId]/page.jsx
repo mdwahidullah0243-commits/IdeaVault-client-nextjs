@@ -2,16 +2,27 @@ import HeadingTextPart from "@/components/idea-details/HeadingTextPart";
 import InteractionPart from "@/components/idea-details/InteractionPart";
 import SimpleTitleDesc from "@/components/idea-details/SimpleTitleDesc";
 import TagGroupBasic from "@/components/idea-details/TagGroupBasic";
+import { auth } from "@/lib/auth";
 import { getIdeaById } from "@/lib/backend-data";
 import { colors } from "@/lib/frontend-data";
 import { Separator } from "@heroui/react";
+import { headers } from "next/headers";
 import Image from "next/image";
+
+export const metadata = {
+    title: "Explore Details",
+};
 
 export const instant = false;
 
 const IdeaDetailsPage = async ({ params }) => {
     const { ideaId } = await params;
-    const idea = await getIdeaById(ideaId);
+
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    });
+
+    const idea = await getIdeaById(ideaId, token);
 
     const { date, comments, imageUrl, title, category, detailedDesc, tags, audience, budget, problem, solution } = idea;
 

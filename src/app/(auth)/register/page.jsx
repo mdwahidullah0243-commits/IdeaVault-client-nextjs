@@ -16,26 +16,50 @@ import {
 } from "@heroui/react";
 import { Eye } from "lucide-react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { FaEyeSlash } from "react-icons/fa6";
 import { toast } from "react-toastify";
 
 const RegisterPage = () => {
     const [isVisible, setIsVisible] = useState(false);
+    const searchParams = useSearchParams();
+    const [error, setError] = useState("");
+
+    const requestedUrl = searchParams.get("callbackUrl") || "/";
+
+    // Prevent external or protocol-relative redirects
+    const callbackUrl =
+        requestedUrl.startsWith("/") &&
+            !requestedUrl.startsWith("//") &&
+            !requestedUrl.startsWith("/\\")
+            ? requestedUrl
+            : "/";
 
     const handleSubmitOnRegister = async (event) => {
         event.preventDefault();
+        setError('');
 
         const formData = new FormData(event.currentTarget);
         const userData = Object.fromEntries(formData.entries());
 
-        const { data, error } = await authClient.signUp.email({
-            name: userData.name,
-            email: userData.email,
-            image: userData.imageUrl,
-            password: userData.password,
-            callbackURL: '/ideas'
-        });
+        const { data, error } = await authClient.signUp.email(
+            {
+                name: userData.name,
+                email: userData.email,
+                image: userData.imageUrl,
+                password: userData.password,
+                callbackURL: callbackUrl
+            },
+            {
+                onSuccess: () => {
+                    window.location.assign(callbackUrl);
+                },
+                onError: (ctx) => {
+                    setError(ctx.error.message);
+                },
+            }
+        );
 
         if (data) {
             toast.success(`Your account is successfully created!`);

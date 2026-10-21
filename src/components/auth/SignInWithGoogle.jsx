@@ -1,13 +1,41 @@
 'use client';
 
 import { authClient } from "@/lib/auth-client";
+import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 
 const SignInWithGoogle = ({ content }) => {
+    const searchParams = useSearchParams();
+    const [error, setError] = useState("");
+
+    const requestedUrl = searchParams.get("callbackUrl") || "/";
+
+    // Prevent external or protocol-relative redirects
+    const callbackUrl =
+        requestedUrl.startsWith("/") &&
+            !requestedUrl.startsWith("//") &&
+            !requestedUrl.startsWith("/\\")
+            ? requestedUrl
+            : "/";
+
     const handleSignInWithGoogle = async () => {
-        await authClient.signIn.social({
-            provider: 'google'
-        });
+        setError('');
+
+        await authClient.signIn.social(
+            {
+                provider: 'google',
+                callbackURL: callbackUrl
+            },
+            {
+                onSuccess: () => {
+                    window.location.assign(callbackUrl);
+                },
+                onError: (ctx) => {
+                    setError(ctx.error.message);
+                },
+            }
+        );
     };
 
     return (

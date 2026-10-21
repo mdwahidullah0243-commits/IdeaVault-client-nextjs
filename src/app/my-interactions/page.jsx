@@ -1,5 +1,9 @@
 import InteractionTabs from "@/components/my-interactions/InteractionTabs";
 
+export const metadata = {
+    title: "My Interactions",
+};
+
 const MyInteractionsPage = () => {
     return (
         <div className="w-11/12 sm:w-9/12 mx-auto my-12 space-y-10">

@@ -1,5 +1,9 @@
 import IdeasContainer from "@/components/ideas/IdeasContainer";
 
+export const metadata = {
+    title: "Explore Ideas",
+};
+
 const IdeasPage = () => {
 
     return (

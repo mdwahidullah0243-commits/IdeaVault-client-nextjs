@@ -1,12 +1,13 @@
 import { revalidatePath } from "next/cache";
 
-export const addIdea = async (formData, ideaData) => {
+export const addIdea = async (formData, ideaData, token) => {
     'use server';
 
     const req = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/add-idea`, {
         method: 'POST',
         headers: {
-            'content-type': 'application/json'
+            'content-type': 'application/json',
+            authorization: `Bearer ${token}`
         },
         body: JSON.stringify(ideaData)
     });
@@ -58,13 +59,14 @@ export const updateVotes = async (ideaId, votesInfo) => {
     revalidatePath(`/idea-details/${ideaId}`);
 };
 
-export const createComment = async (ideaId, userId, commentData) => {
+export const createComment = async (ideaId, userId, commentData, token) => {
     'use server';
 
     await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas/${ideaId}/comments/${userId}`, {
         method: 'POST',
         headers: {
-            'content-type': 'application/json'
+            'content-type': 'application/json',
+            authorization: `Bearer ${token}`
         },
         body: JSON.stringify(commentData)
     });
@@ -72,13 +74,13 @@ export const createComment = async (ideaId, userId, commentData) => {
     revalidatePath(`/idea-details/${ideaId}`);
 };
 
-export const createReply = async (ideaId, parentId, userId, commentData) => {
+export const createReply = async (ideaId, parentId, userId, commentData, token) => {
     'use server';
 
     await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas/${ideaId}/comments/${parentId}/replies/${userId}`, {
         method: 'POST',
         headers: {
-            'content-type': 'application/json'
+            'content-type': 'application/json',
         },
         body: JSON.stringify(commentData)
     });

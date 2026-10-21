@@ -4,14 +4,22 @@ export const getSortedIdeas = async () => {
     return res.json();
 };
 
-export const getIdeaById = async (ideaId) => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/idea-details/${ideaId}`);
+export const getIdeaById = async (ideaId, token) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/idea-details/${ideaId}`, {
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    });
 
     return res.json();
 };
 
-export const getMyIdeas = async (userId) => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-ideas/${userId}`);
+export const getMyIdeas = async (userId, token) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-ideas/${userId}`, {
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    });
 
     return res.json();
 };
@@ -49,14 +57,22 @@ export const getComments = async (ideaId) => {
     return res.json();
 };
 
-export const getCommentsByUserId = async (userId) => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-interactions/comments/${userId}`);
+export const getCommentsByUserId = async (userId, token) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-interactions/comments/${userId}`, {
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    });
 
     return res.json();
 };
 
-export const getLikesByUserId = async (userId) => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-interactions/likes/${userId}`);
+export const getLikesByUserId = async (userId, token) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-interactions/likes/${userId}`, {
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    });
 
     return res.json();
 };

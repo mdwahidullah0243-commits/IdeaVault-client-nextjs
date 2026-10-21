@@ -11,7 +11,7 @@ const RepliedCommentBox = ({ ideaTitle, parentId, parentUser, ideaId, createRepl
         return <p>Loading...</p>
     }
 
-    const handleCreateReplyAction = (event) => {
+    const handleCreateReplyAction = async (event) => {
         event.preventDefault();
 
         const form = event.currentTarget;
@@ -25,7 +25,7 @@ const RepliedCommentBox = ({ ideaTitle, parentId, parentUser, ideaId, createRepl
         };
 
         form.reset();
-        
+
         setIsReplyBox(false);
         setIsView(true)
 

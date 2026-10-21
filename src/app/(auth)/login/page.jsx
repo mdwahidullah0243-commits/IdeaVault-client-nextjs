@@ -16,25 +16,50 @@ import {
 } from "@heroui/react";
 import { Eye } from "lucide-react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { FaEyeSlash } from "react-icons/fa6";
 import { toast } from "react-toastify";
 
 const LoginPage = () => {
     const [isVisible, setIsVisible] = useState(false);
+    const searchParams = useSearchParams();
+    const [error, setError] = useState("");
+
+    const requestedUrl = searchParams.get("callbackUrl") || "/";
+
+    // Prevent external or protocol-relative redirects
+    const callbackUrl =
+        requestedUrl.startsWith("/") &&
+            !requestedUrl.startsWith("//") &&
+            !requestedUrl.startsWith("/\\")
+            ? requestedUrl
+            : "/";
+
 
     const handleSubmitOnLogin = async (event) => {
         event.preventDefault();
+        setError("");
 
         const formData = new FormData(event.currentTarget);
         const userData = Object.fromEntries(formData.entries());
 
-        const { data, error } = await authClient.signIn.email({
-            email: userData.email,
-            password: userData.password,
-            rememberMe: true,
-            callbackURL: '/ideas'
-        });
+        const { data, error } = await authClient.signIn.email(
+            {
+                email: userData.email,
+                password: userData.password,
+                rememberMe: true,
+                callbackURL: callbackUrl
+            },
+            {
+                onSuccess: () => {
+                    window.location.assign(callbackUrl);
+                },
+                onError: (ctx) => {
+                    setError(ctx.error.message);
+                },
+            }
+        );
 
         if (data) {
             toast.success(`You are successfully Logged In. Now, you can enter our platform!`);
@@ -141,7 +166,7 @@ const LoginPage = () => {
                         <p className="font-medium text-slate-400">
                             Don't have an account?
                         </p>
-                        <Link href={'/login'} className="text-[#0abde3] font-semibold">
+                        <Link href={'/register'} className="text-[#0abde3] font-semibold">
                             Sign Up
                         </Link>
                     </div>

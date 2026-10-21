@@ -2,9 +2,13 @@ import { Avatar } from "@heroui/react";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import ProfileDropdown from "./ProfileDropdown";
+import { authClient } from "@/lib/auth-client";
 
 const ProfileManagement = () => {
     const [profileOpen, setProfileOpen] = useState(false);
+    const { data } = authClient.useSession();
+
+    const user = data?.user;
 
     return (
         <div className="relative">
@@ -12,8 +16,8 @@ const ProfileManagement = () => {
                 onClick={() => setProfileOpen((p) => !p)}
                 className="only-avatar"
             >
-                <Avatar.Image alt="John Doe" src="https://img.heroui.chat/image/avatar?w=400&h=400&u=3" />
-                <Avatar.Fallback>JD</Avatar.Fallback>
+                <Avatar.Image alt={user?.name} src={user?.image} />
+                <Avatar.Fallback>{user?.name}</Avatar.Fallback>
             </Avatar>
 
             <div
@@ -22,12 +26,16 @@ const ProfileManagement = () => {
                     }`}
             >
                 <Avatar>
-                    <Avatar.Image alt="John Doe" src="https://img.heroui.chat/image/avatar?w=400&h=400&u=3" />
-                    <Avatar.Fallback>JD</Avatar.Fallback>
+                    <Avatar.Image alt={user?.name} src={user?.image} />
+                    <Avatar.Fallback>{user?.name}</Avatar.Fallback>
                 </Avatar>
 
                 <div className="text-left">
-                    <p className="text-[13px] font-semibold leading-tight text-[#e8eaf0]">Alex Rahim</p>
+                    <p className="text-[13px] font-semibold leading-tight text-[#e8eaf0]">
+                        {
+                            `${user?.name.split(' ').slice(0, 1).join('')} ${user?.name.split(' ').slice(1, 2).map(word => word[0])}.`
+                        }
+                    </p>
                     <p className="text-[11px] text-gray-500">Innovator</p>
                 </div>
 

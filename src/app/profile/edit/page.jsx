@@ -3,6 +3,10 @@ import { auth } from "@/lib/auth";
 import { Avatar, Button, FieldError, Fieldset, Form, Input, Label, Surface, TextField } from "@heroui/react";
 import { headers } from "next/headers";
 
+export const metadata = {
+    title: "Edit Profile",
+};
+
 const ProfileEditPage = async () => {
     
     const session = await auth.api.getSession({

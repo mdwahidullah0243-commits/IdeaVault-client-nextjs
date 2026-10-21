@@ -18,6 +18,7 @@ const FormCard = ({ step, setStep, addIdeaAction }) => {
     const [date, setDate] = useState(null);
 
     const { data, isPending } = authClient.useSession();
+
     const user = data?.user;
 
     useEffect(() => {
@@ -63,6 +64,9 @@ const FormCard = ({ step, setStep, addIdeaAction }) => {
     };
 
     const handleSubmit = async (formData) => {
+        const {data, error} = await authClient.token();
+        const token = data?.token;
+
         const ideaData = {
             userId: user?.id,
             ...form,
@@ -75,7 +79,7 @@ const FormCard = ({ step, setStep, addIdeaAction }) => {
         };
 
         if (isPublishIdea === 'publish') {
-            const res = await addIdeaAction(formData, ideaData);
+            const res = await addIdeaAction(formData, ideaData, token);
 
             if (res.insertedId) {
                 toast.success(`${form.title} Idea successfully added`);
