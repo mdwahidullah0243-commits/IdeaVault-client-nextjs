@@ -10,8 +10,9 @@ const Footer = () => {
         <footer className="mt-10 text-gray-400 px-6 md:px-16 py-16 border-t border-[#ffffff0f]">
             <div className="max-lg:w-10/12 mx-auto">
                 <div className="mb-12">
-                    <h1 className="flex items-center gap-2 text-5xl sm:text-6xl md:text-7xl font-bold text-white">
-                        <Lightbulb size={60} color="#6C63FF" /> IdeaVault
+                    <h1 className="flex flex-col sm:flex-row items-center gap-5 sm:gap-2 text-5xl sm:text-6xl md:text-7xl font-bold text-white">
+                        <Lightbulb size={70} color="#6C63FF" /> 
+                        <span>IdeaVault</span>
                     </h1>
                     <p className="mt-4 max-w-xl max-sm:text-center">
                         A platform to share, validate, and refine innovative startup ideas with the community.

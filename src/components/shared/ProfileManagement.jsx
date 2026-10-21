@@ -3,6 +3,7 @@ import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import ProfileDropdown from "./ProfileDropdown";
 import { authClient } from "@/lib/auth-client";
+import { RiMenu3Line } from "react-icons/ri";
 
 const ProfileManagement = () => {
     const [profileOpen, setProfileOpen] = useState(false);
@@ -12,13 +13,17 @@ const ProfileManagement = () => {
 
     return (
         <div className="relative">
-            <Avatar
+            <div
                 onClick={() => setProfileOpen((p) => !p)}
-                className="only-avatar"
+                className="only-avatar relative"
             >
-                <Avatar.Image alt={user?.name} src={user?.image} />
-                <Avatar.Fallback>{user?.name}</Avatar.Fallback>
-            </Avatar>
+                <Avatar>
+                    <Avatar.Image alt={user?.name} src={user?.image} />
+                    <Avatar.Fallback>{user?.name}</Avatar.Fallback>
+                </Avatar>
+
+                <RiMenu3Line className="size-5 font-extrabold absolute -right-0.5 bottom-0" />
+            </div>
 
             <div
                 onClick={() => setProfileOpen((p) => !p)}
